@@ -5,6 +5,8 @@
 //  Created by Andrei Hogea on 03/10/2018.
 //  Copyright © 2018 Nodes. All rights reserved.
 //
+//
+// Reachability logic is as presented by Marco Santarossa on https://medium.com/@marcosantadev/network-reachability-with-swift-576ca5070e4b
 
 import Foundation
 import SystemConfiguration

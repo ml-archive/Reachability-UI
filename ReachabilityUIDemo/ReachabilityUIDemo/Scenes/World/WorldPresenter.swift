@@ -25,11 +25,7 @@ class WorldPresenter {
 
 extension WorldPresenter: WorldPresenterInput {
     func viewCreated() {
-
-    }
-
-    func handle(_ action: World.Action) {
-        
+        interactor.perform(World.ReachabilityListener.Request())
     }
 }
 
@@ -37,5 +33,7 @@ extension WorldPresenter: WorldPresenterInput {
 
 // INTERACTOR -> PRESENTER (indirect)
 extension WorldPresenter: WorldInteractorOutput {
-
+    func present(_ response: World.ReachabilityListener.Response) {
+        output?.display(World.ReachabilityListener.Display(isConnected: response.isConnected))
+    }
 }

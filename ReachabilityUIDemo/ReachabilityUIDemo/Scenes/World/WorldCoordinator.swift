@@ -38,7 +38,5 @@ class WorldCoordinator: Coordinator {
 // MARK: - Navigation Callbacks
 // PRESENTER -> COORDINATOR
 extension WorldCoordinator: WorldCoordinatorInput {
-    func navigate(to route: World.Route) {
-        
-    }
+
 }

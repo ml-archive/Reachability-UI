@@ -29,4 +29,10 @@ class WorldInteractor {
 
 // PRESENTER -> INTERACTOR
 extension WorldInteractor: WorldInteractorInput {
+    func perform(_ request: World.ReachabilityListener.Request) {
+        let listener: ReachabilityListener = { [weak self] isConnected in
+            self?.output?.present(World.ReachabilityListener.Response(isConnected: isConnected))
+        }
+        reachabilityUIEmbedableRepository.addListener(listener: listener, for: "\(WorldInteractor.self)")
+    }
 }

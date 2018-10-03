@@ -9,9 +9,14 @@
 import UIKit
 
 class WorldViewController: UIViewController {
+    
     // MARK: - Outlets
 
+    @IBOutlet weak var containerViewTop: NSLayoutConstraint!
+    @IBOutlet weak var containerView: UIView!
+    
     // MARK: - Properties
+    
     private var presenter: WorldPresenterInput!
 
     // MARK: - Init
@@ -39,5 +44,10 @@ class WorldViewController: UIViewController {
 
 // PRESENTER -> VIEW
 extension WorldViewController: WorldPresenterOutput {
-
+    func display(_ displayModel: World.ReachabilityListener.Display) {
+        containerViewTop.constant = displayModel.isConnected ? 0 : Sizes.Height.reachabilityView
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }

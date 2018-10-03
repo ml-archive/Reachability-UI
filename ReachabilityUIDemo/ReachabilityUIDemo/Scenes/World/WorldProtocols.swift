@@ -17,19 +17,18 @@ import UIKit
 
 // PRESENTER -> COORDINATOR
 protocol WorldCoordinatorInput: class {
-    func navigate(to route: World.Route)
 }
 
 // ======== Interactor ======== //
 
 // PRESENTER -> INTERACTOR
 protocol WorldInteractorInput {
-    // func perform(_ request: World.Request.Work)
+    func perform(_ request: World.ReachabilityListener.Request)
 }
 
 // INTERACTOR -> PRESENTER (indirect)
 protocol WorldInteractorOutput: class {
-    // func present(_ response: World.Response.Work)
+    func present(_ response: World.ReachabilityListener.Response)
 }
 
 // ======== Presenter ======== //
@@ -37,10 +36,9 @@ protocol WorldInteractorOutput: class {
 // VIEW -> PRESENTER
 protocol WorldPresenterInput {
     func viewCreated()
-    func handle(_ action: World.Action)
 }
 
 // PRESENTER -> VIEW
 protocol WorldPresenterOutput: class {
-    // func display(_ displayModel: World.DisplayData.Work)
+    func display(_ displayModel: World.ReachabilityListener.Display)
 }

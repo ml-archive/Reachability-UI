@@ -9,27 +9,16 @@
 import Foundation
 
 enum World {
-    enum Request { }
-    enum Response { }
-    enum DisplayData { }
-
-    enum Action {
-
-    }
-
-    enum Route {
-
-    }
-}
-
-extension World.Request {
-
-}
-
-extension World.Response {
-
-}
-
-extension World.DisplayData {
     
+    struct ReachabilityListener {}
+}
+
+extension World.ReachabilityListener {
+    struct Request {}
+    struct Response {
+        let isConnected: Bool
+    }
+    struct Display {
+        let isConnected: Bool
+    }
 }
