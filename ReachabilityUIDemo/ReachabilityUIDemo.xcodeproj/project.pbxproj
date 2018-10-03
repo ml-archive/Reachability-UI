@@ -8,20 +8,64 @@
 
 /* Begin PBXBuildFile section */
 		42BDD0402164E1550090F1F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD03F2164E1550090F1F3 /* AppDelegate.swift */; };
-		42BDD0422164E1550090F1F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0412164E1550090F1F3 /* ViewController.swift */; };
-		42BDD0452164E1550090F1F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD0432164E1550090F1F3 /* Main.storyboard */; };
 		42BDD0472164E1570090F1F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD0462164E1570090F1F3 /* Assets.xcassets */; };
 		42BDD04A2164E1570090F1F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD0482164E1570090F1F3 /* LaunchScreen.storyboard */; };
+		42BDD0522164E4400090F1F3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0512164E4400090F1F3 /* Coordinator.swift */; };
+		42BDD0542164E4500090F1F3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0532164E4500090F1F3 /* AppCoordinator.swift */; };
+		42BDD0562164E4890090F1F3 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0552164E4890090F1F3 /* Dependencies.swift */; };
+		42BDD0582164E4CB0090F1F3 /* RechabilityUIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0572164E4CB0090F1F3 /* RechabilityUIRepository.swift */; };
+		42BDD0652164E8540090F1F3 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD05E2164E8540090F1F3 /* TabBarCoordinator.swift */; };
+		42BDD06D2164EBC50090F1F3 /* TabBarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD06C2164EBC50090F1F3 /* TabBarModels.swift */; };
+		42BDD0762164EC810090F1F3 /* HelloCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD06F2164EC810090F1F3 /* HelloCoordinator.swift */; };
+		42BDD0772164EC810090F1F3 /* HelloPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0702164EC810090F1F3 /* HelloPresenter.swift */; };
+		42BDD0782164EC810090F1F3 /* HelloViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD0712164EC810090F1F3 /* HelloViewController.storyboard */; };
+		42BDD0792164EC810090F1F3 /* HelloModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0722164EC810090F1F3 /* HelloModels.swift */; };
+		42BDD07A2164EC810090F1F3 /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0732164EC810090F1F3 /* HelloViewController.swift */; };
+		42BDD07B2164EC810090F1F3 /* HelloProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0742164EC810090F1F3 /* HelloProtocols.swift */; };
+		42BDD07C2164EC810090F1F3 /* HelloInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0752164EC810090F1F3 /* HelloInteractor.swift */; };
+		42BDD0852164F1450090F1F3 /* WorldCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD07E2164F1450090F1F3 /* WorldCoordinator.swift */; };
+		42BDD0862164F1450090F1F3 /* WorldPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD07F2164F1450090F1F3 /* WorldPresenter.swift */; };
+		42BDD0872164F1450090F1F3 /* WorldViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD0802164F1450090F1F3 /* WorldViewController.storyboard */; };
+		42BDD0882164F1450090F1F3 /* WorldModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0812164F1450090F1F3 /* WorldModels.swift */; };
+		42BDD0892164F1450090F1F3 /* WorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0822164F1450090F1F3 /* WorldViewController.swift */; };
+		42BDD08A2164F1450090F1F3 /* WorldProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0832164F1450090F1F3 /* WorldProtocols.swift */; };
+		42BDD08B2164F1450090F1F3 /* WorldInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0842164F1450090F1F3 /* WorldInteractor.swift */; };
+		42BDD08E2164F69B0090F1F3 /* GreetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD08D2164F69B0090F1F3 /* GreetingCell.swift */; };
+		42BDD0902164F6B30090F1F3 /* GreetingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD08F2164F6B30090F1F3 /* GreetingCell.xib */; };
+		42BDD0922164F9E70090F1F3 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0912164F9E70090F1F3 /* Sizes.swift */; };
+		42BDD0952164FCE20090F1F3 /* ReachabilityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		42BDD03C2164E1550090F1F3 /* ReachabilityUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReachabilityUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42BDD03F2164E1550090F1F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		42BDD0412164E1550090F1F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		42BDD0442164E1550090F1F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42BDD0462164E1570090F1F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42BDD0492164E1570090F1F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42BDD04B2164E1570090F1F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42BDD0512164E4400090F1F3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		42BDD0532164E4500090F1F3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		42BDD0552164E4890090F1F3 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		42BDD0572164E4CB0090F1F3 /* RechabilityUIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechabilityUIRepository.swift; sourceTree = "<group>"; };
+		42BDD05E2164E8540090F1F3 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		42BDD06C2164EBC50090F1F3 /* TabBarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModels.swift; sourceTree = "<group>"; };
+		42BDD06F2164EC810090F1F3 /* HelloCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloCoordinator.swift; sourceTree = "<group>"; };
+		42BDD0702164EC810090F1F3 /* HelloPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloPresenter.swift; sourceTree = "<group>"; };
+		42BDD0712164EC810090F1F3 /* HelloViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HelloViewController.storyboard; sourceTree = "<group>"; };
+		42BDD0722164EC810090F1F3 /* HelloModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloModels.swift; sourceTree = "<group>"; };
+		42BDD0732164EC810090F1F3 /* HelloViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
+		42BDD0742164EC810090F1F3 /* HelloProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloProtocols.swift; sourceTree = "<group>"; };
+		42BDD0752164EC810090F1F3 /* HelloInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloInteractor.swift; sourceTree = "<group>"; };
+		42BDD07E2164F1450090F1F3 /* WorldCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCoordinator.swift; sourceTree = "<group>"; };
+		42BDD07F2164F1450090F1F3 /* WorldPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldPresenter.swift; sourceTree = "<group>"; };
+		42BDD0802164F1450090F1F3 /* WorldViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorldViewController.storyboard; sourceTree = "<group>"; };
+		42BDD0812164F1450090F1F3 /* WorldModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldModels.swift; sourceTree = "<group>"; };
+		42BDD0822164F1450090F1F3 /* WorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldViewController.swift; sourceTree = "<group>"; };
+		42BDD0832164F1450090F1F3 /* WorldProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldProtocols.swift; sourceTree = "<group>"; };
+		42BDD0842164F1450090F1F3 /* WorldInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldInteractor.swift; sourceTree = "<group>"; };
+		42BDD08D2164F69B0090F1F3 /* GreetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCell.swift; sourceTree = "<group>"; };
+		42BDD08F2164F6B30090F1F3 /* GreetingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GreetingCell.xib; sourceTree = "<group>"; };
+		42BDD0912164F9E70090F1F3 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
+		42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +98,108 @@
 		42BDD03E2164E1550090F1F3 /* ReachabilityUIDemo */ = {
 			isa = PBXGroup;
 			children = (
+				42BDD0592164E65B0090F1F3 /* App Delegate */,
+				42BDD0932164F9EB0090F1F3 /* Misc */,
+				42BDD05C2164E8200090F1F3 /* Scenes */,
+				42BDD05A2164E6670090F1F3 /* Shared */,
+				42BDD05B2164E6770090F1F3 /* Resources */,
+			);
+			path = ReachabilityUIDemo;
+			sourceTree = "<group>";
+		};
+		42BDD0592164E65B0090F1F3 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD0512164E4400090F1F3 /* Coordinator.swift */,
 				42BDD03F2164E1550090F1F3 /* AppDelegate.swift */,
-				42BDD0412164E1550090F1F3 /* ViewController.swift */,
-				42BDD0432164E1550090F1F3 /* Main.storyboard */,
+				42BDD0532164E4500090F1F3 /* AppCoordinator.swift */,
+			);
+			path = "App Delegate";
+			sourceTree = "<group>";
+		};
+		42BDD05A2164E6670090F1F3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD0552164E4890090F1F3 /* Dependencies.swift */,
+				42BDD0572164E4CB0090F1F3 /* RechabilityUIRepository.swift */,
+				42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		42BDD05B2164E6770090F1F3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				42BDD0462164E1570090F1F3 /* Assets.xcassets */,
 				42BDD0482164E1570090F1F3 /* LaunchScreen.storyboard */,
 				42BDD04B2164E1570090F1F3 /* Info.plist */,
 			);
-			path = ReachabilityUIDemo;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		42BDD05C2164E8200090F1F3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD05D2164E83D0090F1F3 /* TabBar */,
+				42BDD06E2164EC650090F1F3 /* Hello */,
+				42BDD07D2164F12A0090F1F3 /* World */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		42BDD05D2164E83D0090F1F3 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD05E2164E8540090F1F3 /* TabBarCoordinator.swift */,
+				42BDD06C2164EBC50090F1F3 /* TabBarModels.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		42BDD06E2164EC650090F1F3 /* Hello */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD08C2164F5C90090F1F3 /* GreetingCell */,
+				42BDD06F2164EC810090F1F3 /* HelloCoordinator.swift */,
+				42BDD0702164EC810090F1F3 /* HelloPresenter.swift */,
+				42BDD0712164EC810090F1F3 /* HelloViewController.storyboard */,
+				42BDD0722164EC810090F1F3 /* HelloModels.swift */,
+				42BDD0732164EC810090F1F3 /* HelloViewController.swift */,
+				42BDD0742164EC810090F1F3 /* HelloProtocols.swift */,
+				42BDD0752164EC810090F1F3 /* HelloInteractor.swift */,
+			);
+			path = Hello;
+			sourceTree = "<group>";
+		};
+		42BDD07D2164F12A0090F1F3 /* World */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD07E2164F1450090F1F3 /* WorldCoordinator.swift */,
+				42BDD07F2164F1450090F1F3 /* WorldPresenter.swift */,
+				42BDD0802164F1450090F1F3 /* WorldViewController.storyboard */,
+				42BDD0812164F1450090F1F3 /* WorldModels.swift */,
+				42BDD0822164F1450090F1F3 /* WorldViewController.swift */,
+				42BDD0832164F1450090F1F3 /* WorldProtocols.swift */,
+				42BDD0842164F1450090F1F3 /* WorldInteractor.swift */,
+			);
+			path = World;
+			sourceTree = "<group>";
+		};
+		42BDD08C2164F5C90090F1F3 /* GreetingCell */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD08D2164F69B0090F1F3 /* GreetingCell.swift */,
+				42BDD08F2164F6B30090F1F3 /* GreetingCell.xib */,
+			);
+			path = GreetingCell;
+			sourceTree = "<group>";
+		};
+		42BDD0932164F9EB0090F1F3 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD0912164F9E70090F1F3 /* Sizes.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +260,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42BDD0872164F1450090F1F3 /* WorldViewController.storyboard in Resources */,
+				42BDD0782164EC810090F1F3 /* HelloViewController.storyboard in Resources */,
 				42BDD04A2164E1570090F1F3 /* LaunchScreen.storyboard in Resources */,
+				42BDD0902164F6B30090F1F3 /* GreetingCell.xib in Resources */,
 				42BDD0472164E1570090F1F3 /* Assets.xcassets in Resources */,
-				42BDD0452164E1550090F1F3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +275,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42BDD0422164E1550090F1F3 /* ViewController.swift in Sources */,
+				42BDD07B2164EC810090F1F3 /* HelloProtocols.swift in Sources */,
+				42BDD0772164EC810090F1F3 /* HelloPresenter.swift in Sources */,
+				42BDD08E2164F69B0090F1F3 /* GreetingCell.swift in Sources */,
+				42BDD0892164F1450090F1F3 /* WorldViewController.swift in Sources */,
+				42BDD0562164E4890090F1F3 /* Dependencies.swift in Sources */,
+				42BDD0852164F1450090F1F3 /* WorldCoordinator.swift in Sources */,
+				42BDD0922164F9E70090F1F3 /* Sizes.swift in Sources */,
+				42BDD0762164EC810090F1F3 /* HelloCoordinator.swift in Sources */,
+				42BDD0542164E4500090F1F3 /* AppCoordinator.swift in Sources */,
+				42BDD08B2164F1450090F1F3 /* WorldInteractor.swift in Sources */,
+				42BDD0792164EC810090F1F3 /* HelloModels.swift in Sources */,
+				42BDD07C2164EC810090F1F3 /* HelloInteractor.swift in Sources */,
+				42BDD0882164F1450090F1F3 /* WorldModels.swift in Sources */,
+				42BDD08A2164F1450090F1F3 /* WorldProtocols.swift in Sources */,
+				42BDD0652164E8540090F1F3 /* TabBarCoordinator.swift in Sources */,
+				42BDD0522164E4400090F1F3 /* Coordinator.swift in Sources */,
+				42BDD06D2164EBC50090F1F3 /* TabBarModels.swift in Sources */,
+				42BDD0582164E4CB0090F1F3 /* RechabilityUIRepository.swift in Sources */,
+				42BDD0952164FCE20090F1F3 /* ReachabilityRepository.swift in Sources */,
 				42BDD0402164E1550090F1F3 /* AppDelegate.swift in Sources */,
+				42BDD0862164F1450090F1F3 /* WorldPresenter.swift in Sources */,
+				42BDD07A2164EC810090F1F3 /* HelloViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		42BDD0432164E1550090F1F3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				42BDD0442164E1550090F1F3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		42BDD0482164E1570090F1F3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,7 +436,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW27H6H98R;
-				INFOPLIST_FILE = ReachabilityUIDemo/Info.plist;
+				INFOPLIST_FILE = ReachabilityUIDemo/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW27H6H98R;
-				INFOPLIST_FILE = ReachabilityUIDemo/Info.plist;
+				INFOPLIST_FILE = ReachabilityUIDemo/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
