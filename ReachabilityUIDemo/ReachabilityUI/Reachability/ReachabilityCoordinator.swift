@@ -33,6 +33,9 @@ public class ReachabilityCoordinator {
         self.reachabilityUIEmbedableRepository = reachabilityUIEmbedableRepository
     }
 
+    /// Starts the ReachabilityCoordinator and by registering observers and adding the
+    /// ReachabilityViewController to the window
+    ///
     public func start() {
         let interactor = ReachabilityInteractor(reachabilityUIEmbedableRepository: reachabilityUIEmbedableRepository)
         let presenter = ReachabilityPresenter(interactor: interactor,
