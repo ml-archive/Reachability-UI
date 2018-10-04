@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ReachabilityUI
 
 class TabBarCoordinator: Coordinator {
     
@@ -17,6 +18,7 @@ class TabBarCoordinator: Coordinator {
     private let dependencies: FullDependencies
     private var tabBarController: UITabBarController!
     var children: [Coordinator] = []
+    private var reachabilityCoordinator: ReachabilityCoordinator!
     private let scenes: [TabBar.Scene] = [
         .hello,
         .world
@@ -49,8 +51,8 @@ class TabBarCoordinator: Coordinator {
     
     private func addReachability() {
         let coordinator = ReachabilityCoordinator(window: window,
-                                                  dependencies: dependencies)
-        children.append(coordinator)
+                                                  reachabilityUIEmbedableRepository: dependencies.reachabilityUIEmbedableRepository)
+        reachabilityCoordinator = coordinator
         coordinator.start()
     }
     

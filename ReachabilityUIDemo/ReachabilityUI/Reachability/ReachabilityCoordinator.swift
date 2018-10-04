@@ -9,12 +9,11 @@
 import Foundation
 import UIKit
 
-class ReachabilityCoordinator: Coordinator {
+public class ReachabilityCoordinator {
     // MARK: - Properties
     private let window: UIWindow
-    var children: [Coordinator] = []
 
-    private var dependencies: FullDependencies
+    private var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository
     var hasNavigationBar: Bool
     private var vc: ReachabilityViewController! //prevent ViewController from deallocating by holding a reference
     
@@ -26,15 +25,16 @@ class ReachabilityCoordinator: Coordinator {
     /// - parameters:
     ///    - hasNavigationBar: default value is true.
     ///    - dependencies
-    //
-    init(window: UIWindow, dependencies: FullDependencies, hasNavigationBar: Bool = true) {
+    ///    - height of the UIViewController. Default value is 30
+    ///
+    public init(window: UIWindow, reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository, hasNavigationBar: Bool = true, with height: CGFloat = 30) {
         self.window = window
         self.hasNavigationBar = hasNavigationBar
-        self.dependencies = dependencies
+        self.reachabilityUIEmbedableRepository = reachabilityUIEmbedableRepository
     }
 
-    func start() {
-        let interactor = ReachabilityInteractor(reachabilityUIEmbedableRepository: dependencies.reachabilityUIEmbedableRepository)
+    public func start() {
+        let interactor = ReachabilityInteractor(reachabilityUIEmbedableRepository: reachabilityUIEmbedableRepository)
         let presenter = ReachabilityPresenter(interactor: interactor,
                                               coordinator: self)
         let vc = ReachabilityViewController.instantiate(with: presenter,
