@@ -22,3 +22,36 @@ extension Reachability.ReachabilityListener {
         let isConnected: Bool
     }
 }
+
+
+public struct ReachabilityConfiguration {
+    let noConnectionTitle: String
+    let noConnectionTitleColor: UIColor
+    let noConnectionBackgroundColor: UIColor
+    let title: String
+    let titleColor: UIColor
+    let backgroundColor: UIColor
+    let height: CGFloat
+    let font: UIFont
+    let textAlignment: NSTextAlignment
+    
+    public init(noConnectionTitle: String,
+                noConnectionTitleColor: UIColor,
+                noConnectionBackgroundColor: UIColor,
+                title: String,
+                titleColor: UIColor,
+                backgroundColor: UIColor,
+                height: CGFloat,
+                font: UIFont,
+                textAlignment: NSTextAlignment) {
+        self.noConnectionTitle = noConnectionTitle
+        self.noConnectionTitleColor = noConnectionTitleColor
+        self.noConnectionBackgroundColor = noConnectionBackgroundColor
+        self.title = title
+        self.titleColor = titleColor
+        self.backgroundColor = backgroundColor
+        self.height = height
+        self.font = font
+        self.textAlignment = textAlignment
+    }
+}

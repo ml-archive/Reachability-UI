@@ -15,10 +15,10 @@ public class ReachabilityCoordinator {
 
     private var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository
     var hasNavigationBar: Bool
+    private var configuration: ReachabilityConfiguration
     private var vc: ReachabilityViewController! //prevent ViewController from deallocating by holding a reference
     
     // MARK: - Init
-    
     
     /// Init ReachabilityCoordinator
     ///
@@ -27,10 +27,11 @@ public class ReachabilityCoordinator {
     ///    - dependencies
     ///    - height of the UIViewController. Default value is 30
     ///
-    public init(window: UIWindow, reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository, hasNavigationBar: Bool = true, with height: CGFloat = 30) {
+    public init(window: UIWindow, reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository, hasNavigationBar: Bool = true, with configuration: ReachabilityConfiguration) {
         self.window = window
         self.hasNavigationBar = hasNavigationBar
         self.reachabilityUIEmbedableRepository = reachabilityUIEmbedableRepository
+        self.configuration = configuration
     }
 
     /// Starts the ReachabilityCoordinator and by registering observers and adding the
@@ -42,7 +43,8 @@ public class ReachabilityCoordinator {
                                               coordinator: self)
         let vc = ReachabilityViewController.instantiate(with: presenter,
                                                         window: window,
-                                                        hasNavigationBar: hasNavigationBar)
+                                                        hasNavigationBar: hasNavigationBar,
+                                                        with: configuration)
         self.vc = vc
 
         interactor.output = presenter

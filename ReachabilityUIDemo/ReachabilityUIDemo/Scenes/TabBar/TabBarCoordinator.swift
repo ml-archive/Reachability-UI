@@ -50,8 +50,17 @@ class TabBarCoordinator: Coordinator {
     }
     
     private func addReachability() {
+        let configuration = ReachabilityConfiguration(noConnectionTitle: "Connected",
+                                                      noConnectionTitleColor: .white,
+                                                      noConnectionBackgroundColor: UIColor.red.withAlphaComponent(0.6),
+                                                      title: "No Connection",
+                                                      titleColor: .white,
+                                                      backgroundColor: UIColor.green.withAlphaComponent(0.6),
+                                                      height: 30,
+                                                      font: UIFont.systemFont(ofSize: 12),
+                                                      textAlignment: .center)
         let coordinator = ReachabilityCoordinator(window: window,
-                                                  reachabilityUIEmbedableRepository: dependencies.reachabilityUIEmbedableRepository)
+                                                  reachabilityUIEmbedableRepository: dependencies.reachabilityUIEmbedableRepository, with: configuration)
         reachabilityCoordinator = coordinator
         coordinator.start()
     }
