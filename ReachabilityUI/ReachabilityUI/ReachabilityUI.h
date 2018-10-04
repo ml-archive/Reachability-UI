@@ -3,7 +3,7 @@
 //  ReachabilityUI
 //
 //  Created by Andrei Hogea on 04/10/2018.
-//  Copyright © 2018 Nodes. All rights reserved.
+//  Copyright © 2018 Nodes Aps. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
