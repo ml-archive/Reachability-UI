@@ -99,9 +99,10 @@ class ReachabilityViewController: UIViewController {
         let finalY = state == .hide ? -configuration.height : statusBarHeight + navigationBarHeight
         
         let animated = view.frame.height == configuration.height
+        let animationDuration = animated ? 0.3 : 0.0
         let delay = state == .hide ? 0.75 : 0.0
  
-            UIView.animate(withDuration: animated ? 0 : 0.3, delay: delay, animations: {
+            UIView.animate(withDuration: animationDuration, delay: delay, animations: {
             self.view.frame = CGRect(x: 0, y: finalY, width: self.window.frame.width, height: self.configuration.height)
             self.window.layoutIfNeeded()
         })
