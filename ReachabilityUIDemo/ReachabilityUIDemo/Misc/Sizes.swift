@@ -13,5 +13,5 @@ struct Sizes {
 }
 
 extension Sizes.Height {
-    public static let reachabilityView: CGFloat = 30
+    public static let reachabilityView: CGFloat = 60
 }

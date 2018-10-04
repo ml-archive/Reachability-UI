@@ -34,6 +34,13 @@
 		42BDD0902164F6B30090F1F3 /* GreetingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD08F2164F6B30090F1F3 /* GreetingCell.xib */; };
 		42BDD0922164F9E70090F1F3 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0912164F9E70090F1F3 /* Sizes.swift */; };
 		42BDD0952164FCE20090F1F3 /* ReachabilityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */; };
+		42BDD09F216622310090F1F3 /* ReachabilityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD098216622310090F1F3 /* ReachabilityCoordinator.swift */; };
+		42BDD0A0216622310090F1F3 /* ReachabilityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD099216622310090F1F3 /* ReachabilityPresenter.swift */; };
+		42BDD0A1216622310090F1F3 /* ReachabilityViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD09A216622310090F1F3 /* ReachabilityViewController.storyboard */; };
+		42BDD0A2216622310090F1F3 /* ReachabilityModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09B216622310090F1F3 /* ReachabilityModels.swift */; };
+		42BDD0A3216622310090F1F3 /* ReachabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09C216622310090F1F3 /* ReachabilityViewController.swift */; };
+		42BDD0A4216622310090F1F3 /* ReachabilityProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09D216622310090F1F3 /* ReachabilityProtocols.swift */; };
+		42BDD0A5216622310090F1F3 /* ReachabilityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09E216622310090F1F3 /* ReachabilityInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +73,13 @@
 		42BDD08F2164F6B30090F1F3 /* GreetingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GreetingCell.xib; sourceTree = "<group>"; };
 		42BDD0912164F9E70090F1F3 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityRepository.swift; sourceTree = "<group>"; };
+		42BDD098216622310090F1F3 /* ReachabilityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityCoordinator.swift; sourceTree = "<group>"; };
+		42BDD099216622310090F1F3 /* ReachabilityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityPresenter.swift; sourceTree = "<group>"; };
+		42BDD09A216622310090F1F3 /* ReachabilityViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReachabilityViewController.storyboard; sourceTree = "<group>"; };
+		42BDD09B216622310090F1F3 /* ReachabilityModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityModels.swift; sourceTree = "<group>"; };
+		42BDD09C216622310090F1F3 /* ReachabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityViewController.swift; sourceTree = "<group>"; };
+		42BDD09D216622310090F1F3 /* ReachabilityProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityProtocols.swift; sourceTree = "<group>"; };
+		42BDD09E216622310090F1F3 /* ReachabilityInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				42BDD05D2164E83D0090F1F3 /* TabBar */,
+				42BDD0972166221B0090F1F3 /* Reachability */,
 				42BDD06E2164EC650090F1F3 /* Hello */,
 				42BDD07D2164F12A0090F1F3 /* World */,
 			);
@@ -200,6 +215,20 @@
 				42BDD0912164F9E70090F1F3 /* Sizes.swift */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		42BDD0972166221B0090F1F3 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD098216622310090F1F3 /* ReachabilityCoordinator.swift */,
+				42BDD099216622310090F1F3 /* ReachabilityPresenter.swift */,
+				42BDD09A216622310090F1F3 /* ReachabilityViewController.storyboard */,
+				42BDD09B216622310090F1F3 /* ReachabilityModels.swift */,
+				42BDD09C216622310090F1F3 /* ReachabilityViewController.swift */,
+				42BDD09D216622310090F1F3 /* ReachabilityProtocols.swift */,
+				42BDD09E216622310090F1F3 /* ReachabilityInteractor.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +293,7 @@
 				42BDD0782164EC810090F1F3 /* HelloViewController.storyboard in Resources */,
 				42BDD04A2164E1570090F1F3 /* LaunchScreen.storyboard in Resources */,
 				42BDD0902164F6B30090F1F3 /* GreetingCell.xib in Resources */,
+				42BDD0A1216622310090F1F3 /* ReachabilityViewController.storyboard in Resources */,
 				42BDD0472164E1570090F1F3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,27 +306,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				42BDD07B2164EC810090F1F3 /* HelloProtocols.swift in Sources */,
+				42BDD09F216622310090F1F3 /* ReachabilityCoordinator.swift in Sources */,
 				42BDD0772164EC810090F1F3 /* HelloPresenter.swift in Sources */,
 				42BDD08E2164F69B0090F1F3 /* GreetingCell.swift in Sources */,
 				42BDD0892164F1450090F1F3 /* WorldViewController.swift in Sources */,
 				42BDD0562164E4890090F1F3 /* Dependencies.swift in Sources */,
 				42BDD0852164F1450090F1F3 /* WorldCoordinator.swift in Sources */,
+				42BDD0A0216622310090F1F3 /* ReachabilityPresenter.swift in Sources */,
 				42BDD0922164F9E70090F1F3 /* Sizes.swift in Sources */,
 				42BDD0762164EC810090F1F3 /* HelloCoordinator.swift in Sources */,
 				42BDD0542164E4500090F1F3 /* AppCoordinator.swift in Sources */,
+				42BDD0A2216622310090F1F3 /* ReachabilityModels.swift in Sources */,
 				42BDD08B2164F1450090F1F3 /* WorldInteractor.swift in Sources */,
 				42BDD0792164EC810090F1F3 /* HelloModels.swift in Sources */,
 				42BDD07C2164EC810090F1F3 /* HelloInteractor.swift in Sources */,
 				42BDD0882164F1450090F1F3 /* WorldModels.swift in Sources */,
+				42BDD0A4216622310090F1F3 /* ReachabilityProtocols.swift in Sources */,
 				42BDD08A2164F1450090F1F3 /* WorldProtocols.swift in Sources */,
 				42BDD0652164E8540090F1F3 /* TabBarCoordinator.swift in Sources */,
 				42BDD0522164E4400090F1F3 /* Coordinator.swift in Sources */,
 				42BDD06D2164EBC50090F1F3 /* TabBarModels.swift in Sources */,
+				42BDD0A3216622310090F1F3 /* ReachabilityViewController.swift in Sources */,
 				42BDD0582164E4CB0090F1F3 /* RechabilityUIRepository.swift in Sources */,
 				42BDD0952164FCE20090F1F3 /* ReachabilityRepository.swift in Sources */,
 				42BDD0402164E1550090F1F3 /* AppDelegate.swift in Sources */,
 				42BDD0862164F1450090F1F3 /* WorldPresenter.swift in Sources */,
 				42BDD07A2164EC810090F1F3 /* HelloViewController.swift in Sources */,
+				42BDD0A5216622310090F1F3 /* ReachabilityInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW27H6H98R;
 				INFOPLIST_FILE = ReachabilityUIDemo/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,6 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW27H6H98R;
 				INFOPLIST_FILE = ReachabilityUIDemo/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

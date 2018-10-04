@@ -34,9 +34,10 @@ class TabBarCoordinator: Coordinator {
         self.tabBarController = vc
         
         addCoordinators()
-        
+
         UIView.transition(with: window, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.window.rootViewController = self.tabBarController
+            self.window.rootViewController = vc
+            self.addReachability()
         }, completion: nil)
     }
     
@@ -44,6 +45,13 @@ class TabBarCoordinator: Coordinator {
     
     private func addCoordinators() {
         scenes.forEach { self.addCoordinator(type: $0) }
+    }
+    
+    private func addReachability() {
+        let coordinator = ReachabilityCoordinator(window: window,
+                                                  dependencies: dependencies)
+        children.append(coordinator)
+        coordinator.start()
     }
     
     private func addCoordinator(type: TabBar.Scene) {
@@ -60,7 +68,7 @@ class TabBarCoordinator: Coordinator {
             navigationController.tabBarItem = UITabBarItem(title: "Hello", image: nil, selectedImage: nil)
         case .world:
             coordinator = WorldCoordinator(navigationController: navigationController, dependencies: dependencies)
-            navigationController.tabBarItem = UITabBarItem(title: "Hello", image: nil, selectedImage: nil)
+            navigationController.tabBarItem = UITabBarItem(title: "World", image: nil, selectedImage: nil)
         }
         
         children.append(coordinator)
