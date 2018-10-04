@@ -18,7 +18,7 @@ class ReachabilityViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var titleLabel: UILabel!
-    /// set yPosition to 0 to show the label, and -1 to hide the label
+
     private var state: State! {
         didSet {
             DispatchQueue.main.async {
