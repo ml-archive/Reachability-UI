@@ -8,23 +8,23 @@
 
 import Foundation
 
-typealias ReachabilityListener = (_ isConnected: Bool) -> Void
+public typealias ReachabilityListener = (_ isConnected: Bool) -> Void
 
-protocol ReachabilityUIEmbedableRepository: class {
+public protocol ReachabilityUIEmbedableRepository: class {
     func addListener(listener: @escaping ReachabilityListener, for id: String)
     func removeListener(for id: String)
 }
 
-protocol ReachabilityUIControlRepository: class {
+public protocol ReachabilityUIControlRepository: class {
     func networkStatusChanged(_ isConnected: Bool)
 }
 
-protocol HasReachabilityUIRepository {
+public protocol HasReachabilityUIRepository {
     var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository { get set }
     var reachabilityUIControlRepository: ReachabilityUIControlRepository { get set }
 }
 
-final class ReachabilityUIManager: ReachabilityUIEmbedableRepository {
+public final class ReachabilityUIManager: ReachabilityUIEmbedableRepository {
     public static let shared = ReachabilityUIManager()
     
     private var isConnected = false {
@@ -34,12 +34,18 @@ final class ReachabilityUIManager: ReachabilityUIEmbedableRepository {
     }
     private var listeners: [String: ReachabilityListener] = [:]
     
-    func addListener(listener: @escaping ReachabilityListener, for id: String) {
+    // MARK: - Init
+    
+    public init() {}
+    
+    // MARK: - Listeners
+    
+    public func addListener(listener: @escaping ReachabilityListener, for id: String) {
         listeners[id] = listener
         notify()
     }
     
-    func removeListener(for id: String) {
+    public func removeListener(for id: String) {
         listeners[id] = nil
     }
     
@@ -51,7 +57,7 @@ final class ReachabilityUIManager: ReachabilityUIEmbedableRepository {
 }
 
 extension ReachabilityUIManager: ReachabilityUIControlRepository {
-    func networkStatusChanged(_ isConnected: Bool) {
+    public func networkStatusChanged(_ isConnected: Bool) {
         self.isConnected = isConnected
     }
 }

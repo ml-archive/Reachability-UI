@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReachabilityUI
 
 class WorldInteractor {
     // MARK: - Properties

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReachabilityUI
 
 class ReachabilityInteractor {
     // MARK: - Properties
