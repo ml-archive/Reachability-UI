@@ -50,10 +50,10 @@ class TabBarCoordinator: Coordinator {
     }
     
     private func addReachability() {
-        let configuration = ReachabilityConfiguration(noConnectionTitle: "Connected",
+        let configuration = ReachabilityConfiguration(noConnectionTitle: "No Connection",
                                                       noConnectionTitleColor: .white,
                                                       noConnectionBackgroundColor: UIColor.red.withAlphaComponent(0.6),
-                                                      title: "No Connection",
+                                                      title: "Connected",
                                                       titleColor: .white,
                                                       backgroundColor: UIColor.green.withAlphaComponent(0.6),
                                                       height: 30,
