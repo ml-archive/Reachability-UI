@@ -8,6 +8,7 @@
 
 
 import Foundation
+import ReachabilityUI
 
 typealias FullDependencies =
     HasReachabilityUIRepository & HasReachabilityRepository

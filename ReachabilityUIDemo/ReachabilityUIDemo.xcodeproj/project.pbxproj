@@ -13,7 +13,6 @@
 		42BDD0522164E4400090F1F3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0512164E4400090F1F3 /* Coordinator.swift */; };
 		42BDD0542164E4500090F1F3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0532164E4500090F1F3 /* AppCoordinator.swift */; };
 		42BDD0562164E4890090F1F3 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0552164E4890090F1F3 /* Dependencies.swift */; };
-		42BDD0582164E4CB0090F1F3 /* RechabilityUIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0572164E4CB0090F1F3 /* RechabilityUIRepository.swift */; };
 		42BDD0652164E8540090F1F3 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD05E2164E8540090F1F3 /* TabBarCoordinator.swift */; };
 		42BDD06D2164EBC50090F1F3 /* TabBarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD06C2164EBC50090F1F3 /* TabBarModels.swift */; };
 		42BDD0762164EC810090F1F3 /* HelloCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD06F2164EC810090F1F3 /* HelloCoordinator.swift */; };
@@ -32,16 +31,44 @@
 		42BDD08B2164F1450090F1F3 /* WorldInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0842164F1450090F1F3 /* WorldInteractor.swift */; };
 		42BDD08E2164F69B0090F1F3 /* GreetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD08D2164F69B0090F1F3 /* GreetingCell.swift */; };
 		42BDD0902164F6B30090F1F3 /* GreetingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD08F2164F6B30090F1F3 /* GreetingCell.xib */; };
-		42BDD0922164F9E70090F1F3 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0912164F9E70090F1F3 /* Sizes.swift */; };
-		42BDD0952164FCE20090F1F3 /* ReachabilityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */; };
-		42BDD09F216622310090F1F3 /* ReachabilityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD098216622310090F1F3 /* ReachabilityCoordinator.swift */; };
-		42BDD0A0216622310090F1F3 /* ReachabilityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD099216622310090F1F3 /* ReachabilityPresenter.swift */; };
-		42BDD0A1216622310090F1F3 /* ReachabilityViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD09A216622310090F1F3 /* ReachabilityViewController.storyboard */; };
-		42BDD0A2216622310090F1F3 /* ReachabilityModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09B216622310090F1F3 /* ReachabilityModels.swift */; };
-		42BDD0A3216622310090F1F3 /* ReachabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09C216622310090F1F3 /* ReachabilityViewController.swift */; };
-		42BDD0A4216622310090F1F3 /* ReachabilityProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09D216622310090F1F3 /* ReachabilityProtocols.swift */; };
-		42BDD0A5216622310090F1F3 /* ReachabilityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09E216622310090F1F3 /* ReachabilityInteractor.swift */; };
+		42F9A94421663CC500A40B43 /* ReachabilityUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F9A94221663CC500A40B43 /* ReachabilityUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42F9A94721663CC500A40B43 /* ReachabilityUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F9A94021663CC500A40B43 /* ReachabilityUI.framework */; };
+		42F9A94821663CC500A40B43 /* ReachabilityUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42F9A94021663CC500A40B43 /* ReachabilityUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		42F9A94E21663D1200A40B43 /* ReachabilityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */; };
+		42F9A94F21663D1500A40B43 /* RechabilityUIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0572164E4CB0090F1F3 /* RechabilityUIRepository.swift */; };
+		42F9A95021663E6D00A40B43 /* ReachabilityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD098216622310090F1F3 /* ReachabilityCoordinator.swift */; };
+		42F9A95121663E6F00A40B43 /* ReachabilityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD099216622310090F1F3 /* ReachabilityPresenter.swift */; };
+		42F9A95221663E7300A40B43 /* ReachabilityViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD09A216622310090F1F3 /* ReachabilityViewController.storyboard */; };
+		42F9A95321663E7600A40B43 /* ReachabilityModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09B216622310090F1F3 /* ReachabilityModels.swift */; };
+		42F9A95421663E7900A40B43 /* ReachabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09C216622310090F1F3 /* ReachabilityViewController.swift */; };
+		42F9A95521663E7D00A40B43 /* ReachabilityProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09D216622310090F1F3 /* ReachabilityProtocols.swift */; };
+		42F9A95621663E8000A40B43 /* ReachabilityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD09E216622310090F1F3 /* ReachabilityInteractor.swift */; };
+		42F9A95821663F6100A40B43 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD0912164F9E70090F1F3 /* Sizes.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42F9A94521663CC500A40B43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42BDD0342164E1550090F1F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42F9A93F21663CC500A40B43;
+			remoteInfo = ReachabilityUI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		42F9A94C21663CC500A40B43 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				42F9A94821663CC500A40B43 /* ReachabilityUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		42BDD03C2164E1550090F1F3 /* ReachabilityUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReachabilityUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,10 +107,21 @@
 		42BDD09C216622310090F1F3 /* ReachabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityViewController.swift; sourceTree = "<group>"; };
 		42BDD09D216622310090F1F3 /* ReachabilityProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityProtocols.swift; sourceTree = "<group>"; };
 		42BDD09E216622310090F1F3 /* ReachabilityInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityInteractor.swift; sourceTree = "<group>"; };
+		42F9A94021663CC500A40B43 /* ReachabilityUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReachabilityUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42F9A94221663CC500A40B43 /* ReachabilityUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReachabilityUI.h; sourceTree = "<group>"; };
+		42F9A94321663CC500A40B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		42BDD0392164E1550090F1F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42F9A94721663CC500A40B43 /* ReachabilityUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F9A93D21663CC500A40B43 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -97,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				42BDD03E2164E1550090F1F3 /* ReachabilityUIDemo */,
+				42F9A94121663CC500A40B43 /* ReachabilityUI */,
 				42BDD03D2164E1550090F1F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				42BDD03C2164E1550090F1F3 /* ReachabilityUIDemo.app */,
+				42F9A94021663CC500A40B43 /* ReachabilityUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,8 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				42BDD0552164E4890090F1F3 /* Dependencies.swift */,
-				42BDD0572164E4CB0090F1F3 /* RechabilityUIRepository.swift */,
-				42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -155,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				42BDD05D2164E83D0090F1F3 /* TabBar */,
-				42BDD0972166221B0090F1F3 /* Reachability */,
 				42BDD06E2164EC650090F1F3 /* Hello */,
 				42BDD07D2164F12A0090F1F3 /* World */,
 			);
@@ -231,7 +268,38 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		42F9A94121663CC500A40B43 /* ReachabilityUI */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD0972166221B0090F1F3 /* Reachability */,
+				42F9A94D21663CF600A40B43 /* Shared */,
+				42F9A94221663CC500A40B43 /* ReachabilityUI.h */,
+				42F9A94321663CC500A40B43 /* Info.plist */,
+			);
+			path = ReachabilityUI;
+			sourceTree = "<group>";
+		};
+		42F9A94D21663CF600A40B43 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				42BDD0942164FCE20090F1F3 /* ReachabilityRepository.swift */,
+				42BDD0572164E4CB0090F1F3 /* RechabilityUIRepository.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		42F9A93B21663CC500A40B43 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42F9A94421663CC500A40B43 /* ReachabilityUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		42BDD03B2164E1550090F1F3 /* ReachabilityUIDemo */ = {
@@ -241,15 +309,35 @@
 				42BDD0382164E1550090F1F3 /* Sources */,
 				42BDD0392164E1550090F1F3 /* Frameworks */,
 				42BDD03A2164E1550090F1F3 /* Resources */,
+				42F9A94C21663CC500A40B43 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				42F9A94621663CC500A40B43 /* PBXTargetDependency */,
 			);
 			name = ReachabilityUIDemo;
 			productName = ReachabilityUIDemo;
 			productReference = 42BDD03C2164E1550090F1F3 /* ReachabilityUIDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		42F9A93F21663CC500A40B43 /* ReachabilityUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42F9A94B21663CC500A40B43 /* Build configuration list for PBXNativeTarget "ReachabilityUI" */;
+			buildPhases = (
+				42F9A93B21663CC500A40B43 /* Headers */,
+				42F9A93C21663CC500A40B43 /* Sources */,
+				42F9A93D21663CC500A40B43 /* Frameworks */,
+				42F9A93E21663CC500A40B43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReachabilityUI;
+			productName = ReachabilityUI;
+			productReference = 42F9A94021663CC500A40B43 /* ReachabilityUI.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -262,6 +350,9 @@
 				ORGANIZATIONNAME = Nodes;
 				TargetAttributes = {
 					42BDD03B2164E1550090F1F3 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					42F9A93F21663CC500A40B43 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -280,6 +371,7 @@
 			projectRoot = "";
 			targets = (
 				42BDD03B2164E1550090F1F3 /* ReachabilityUIDemo */,
+				42F9A93F21663CC500A40B43 /* ReachabilityUI */,
 			);
 		};
 /* End PBXProject section */
@@ -293,8 +385,15 @@
 				42BDD0782164EC810090F1F3 /* HelloViewController.storyboard in Resources */,
 				42BDD04A2164E1570090F1F3 /* LaunchScreen.storyboard in Resources */,
 				42BDD0902164F6B30090F1F3 /* GreetingCell.xib in Resources */,
-				42BDD0A1216622310090F1F3 /* ReachabilityViewController.storyboard in Resources */,
 				42BDD0472164E1570090F1F3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F9A93E21663CC500A40B43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42F9A95221663E7300A40B43 /* ReachabilityViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,37 +405,52 @@
 			buildActionMask = 2147483647;
 			files = (
 				42BDD07B2164EC810090F1F3 /* HelloProtocols.swift in Sources */,
-				42BDD09F216622310090F1F3 /* ReachabilityCoordinator.swift in Sources */,
 				42BDD0772164EC810090F1F3 /* HelloPresenter.swift in Sources */,
 				42BDD08E2164F69B0090F1F3 /* GreetingCell.swift in Sources */,
 				42BDD0892164F1450090F1F3 /* WorldViewController.swift in Sources */,
 				42BDD0562164E4890090F1F3 /* Dependencies.swift in Sources */,
 				42BDD0852164F1450090F1F3 /* WorldCoordinator.swift in Sources */,
-				42BDD0A0216622310090F1F3 /* ReachabilityPresenter.swift in Sources */,
-				42BDD0922164F9E70090F1F3 /* Sizes.swift in Sources */,
 				42BDD0762164EC810090F1F3 /* HelloCoordinator.swift in Sources */,
 				42BDD0542164E4500090F1F3 /* AppCoordinator.swift in Sources */,
-				42BDD0A2216622310090F1F3 /* ReachabilityModels.swift in Sources */,
 				42BDD08B2164F1450090F1F3 /* WorldInteractor.swift in Sources */,
 				42BDD0792164EC810090F1F3 /* HelloModels.swift in Sources */,
 				42BDD07C2164EC810090F1F3 /* HelloInteractor.swift in Sources */,
 				42BDD0882164F1450090F1F3 /* WorldModels.swift in Sources */,
-				42BDD0A4216622310090F1F3 /* ReachabilityProtocols.swift in Sources */,
 				42BDD08A2164F1450090F1F3 /* WorldProtocols.swift in Sources */,
 				42BDD0652164E8540090F1F3 /* TabBarCoordinator.swift in Sources */,
 				42BDD0522164E4400090F1F3 /* Coordinator.swift in Sources */,
 				42BDD06D2164EBC50090F1F3 /* TabBarModels.swift in Sources */,
-				42BDD0A3216622310090F1F3 /* ReachabilityViewController.swift in Sources */,
-				42BDD0582164E4CB0090F1F3 /* RechabilityUIRepository.swift in Sources */,
-				42BDD0952164FCE20090F1F3 /* ReachabilityRepository.swift in Sources */,
+				42F9A95821663F6100A40B43 /* Sizes.swift in Sources */,
 				42BDD0402164E1550090F1F3 /* AppDelegate.swift in Sources */,
 				42BDD0862164F1450090F1F3 /* WorldPresenter.swift in Sources */,
 				42BDD07A2164EC810090F1F3 /* HelloViewController.swift in Sources */,
-				42BDD0A5216622310090F1F3 /* ReachabilityInteractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F9A93C21663CC500A40B43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42F9A95521663E7D00A40B43 /* ReachabilityProtocols.swift in Sources */,
+				42F9A95021663E6D00A40B43 /* ReachabilityCoordinator.swift in Sources */,
+				42F9A95321663E7600A40B43 /* ReachabilityModels.swift in Sources */,
+				42F9A95621663E8000A40B43 /* ReachabilityInteractor.swift in Sources */,
+				42F9A95421663E7900A40B43 /* ReachabilityViewController.swift in Sources */,
+				42F9A94F21663D1500A40B43 /* RechabilityUIRepository.swift in Sources */,
+				42F9A94E21663D1200A40B43 /* ReachabilityRepository.swift in Sources */,
+				42F9A95121663E6F00A40B43 /* ReachabilityPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42F9A94621663CC500A40B43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42F9A93F21663CC500A40B43 /* ReachabilityUI */;
+			targetProxy = 42F9A94521663CC500A40B43 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		42BDD0482164E1570090F1F3 /* LaunchScreen.storyboard */ = {
@@ -469,6 +583,7 @@
 		42BDD04F2164E1570090F1F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW27H6H98R;
@@ -488,6 +603,7 @@
 		42BDD0502164E1570090F1F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW27H6H98R;
@@ -501,6 +617,64 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		42F9A94921663CC500A40B43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HW27H6H98R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ReachabilityUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hogeaandrei.ReachabilityUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		42F9A94A21663CC500A40B43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HW27H6H98R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ReachabilityUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hogeaandrei.ReachabilityUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -521,6 +695,15 @@
 			buildConfigurations = (
 				42BDD04F2164E1570090F1F3 /* Debug */,
 				42BDD0502164E1570090F1F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42F9A94B21663CC500A40B43 /* Build configuration list for PBXNativeTarget "ReachabilityUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42F9A94921663CC500A40B43 /* Debug */,
+				42F9A94A21663CC500A40B43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

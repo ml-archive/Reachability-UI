@@ -11,15 +11,15 @@
 import Foundation
 import SystemConfiguration
 
-protocol ReachabilityRepository: class {
+public protocol ReachabilityRepository: class {
     func setup(_ reachabilityUIControlRepository: ReachabilityUIControlRepository)
 }
 
-protocol HasReachabilityRepository {
+public protocol HasReachabilityRepository {
     var reachabilityRepository: ReachabilityRepository { get set }
 }
 
-final class ReachabilityManager: ReachabilityRepository {
+public final class ReachabilityManager: ReachabilityRepository {
     
     public static let shared = ReachabilityManager()
     
@@ -50,7 +50,7 @@ final class ReachabilityManager: ReachabilityRepository {
     
     // MARK: - Init
     
-    init() {
+    public init() {
         start()
     }
     
@@ -60,7 +60,7 @@ final class ReachabilityManager: ReachabilityRepository {
     
     // MARK: - Setup
     
-    func setup(_ reachabilityUIControlRepository: ReachabilityUIControlRepository) {
+    public func setup(_ reachabilityUIControlRepository: ReachabilityUIControlRepository) {
         self.reachabilityUIControlRepository = reachabilityUIControlRepository
     }
     
