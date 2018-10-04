@@ -23,13 +23,7 @@ class ReachabilityViewController: UIViewController {
         didSet {
             adjustLabelBasedOnConfiguration(state)
             DispatchQueue.main.async {
-                let statusBarHeight = UIApplication.shared.statusBarFrame.height
-                let navigationBarHeight = self.hasNavigationBar ? UINavigationController().navigationBar.frame.height : 0
-                let finalY = self.state == .hide ? -self.configuration.height : statusBarHeight + navigationBarHeight
-                UIView.animate(withDuration: self.view.frame.height != self.configuration.height ? 0 : 0.3, animations: {
-                    self.view.frame = CGRect(x: 0, y: finalY, width: self.window.frame.width, height: self.configuration.height)
-                    self.window.layoutIfNeeded()
-                })
+                self.animatePositionChange(self.state)
                 self.window.bringSubviewToFront(self.view)
             }
         }
@@ -54,7 +48,8 @@ class ReachabilityViewController: UIViewController {
                            hasNavigationBar: Bool,
                            with configuration: ReachabilityConfiguration) -> ReachabilityViewController {
         let name = "\(ReachabilityViewController.self)"
-        let storyboard = UIStoryboard(name: name, bundle: nil)
+        let storyboardBundle = Bundle(for: ReachabilityViewController.self)
+        let storyboard = UIStoryboard(name: name, bundle: storyboardBundle)
         // swiftlint:disable:next force_cast
         let vc = storyboard.instantiateViewController(withIdentifier: name) as! ReachabilityViewController
         vc.presenter = presenter
@@ -96,6 +91,20 @@ class ReachabilityViewController: UIViewController {
             titleLabel.textColor = configuration.titleColor
             view.backgroundColor = configuration.backgroundColor
         }
+    }
+    
+    private func animatePositionChange(_ state: State) {
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let navigationBarHeight = hasNavigationBar ? UINavigationController().navigationBar.frame.height : 0
+        let finalY = state == .hide ? -configuration.height : statusBarHeight + navigationBarHeight
+        
+        let animated = view.frame.height == configuration.height
+        let delay = state == .hide ? 0.75 : 0.0
+ 
+            UIView.animate(withDuration: animated ? 0 : 0.3, delay: delay, animations: {
+            self.view.frame = CGRect(x: 0, y: finalY, width: self.window.frame.width, height: self.configuration.height)
+            self.window.layoutIfNeeded()
+        })
     }
     
 }
