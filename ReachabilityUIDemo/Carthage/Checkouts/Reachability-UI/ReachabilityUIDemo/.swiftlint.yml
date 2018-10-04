@@ -1,0 +1,20 @@
+disabled_rules:
+  - identifier_name
+  - line_length
+  - function_parameter_count
+  - todo
+  - missing_docs
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  - missing_docs
+  - vertical_whitespace
+  # Find all the available rules by running:
+  # swiftlint rules
+excluded:
+ - Listen-to-News/Resources/NStack/Translations 
+ - Carthage
+ - Pods
+
+line_length: 170
+trailing_whitespace:
+  ignores_empty_lines: true
