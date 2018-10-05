@@ -5,8 +5,8 @@
 
 Demo Project + Framework showcasing the integration of the ReachabilityUI framework in a Nodes like VIPER architecture.
 
-ReachabilityUI is a framework that is meant to help displaying the Network connection banner when the user looses connection to the internet in an app.
-With ReachabilityUI you can even register a `ReachabilityListener` instance that will allow you to get notified about the connection drop. This can be used to ajust your application's UI so that the content won't overlap the banner, or for any other action you might need to take when the connectivy drops.
+ReachabilityUI is a framework that is meant to help displaying the Network connection banner when the user loses connection to the internet in an app.
+With ReachabilityUI you can even register a `ReachabilityListener` instance that will allow you to get notified about the connection drop. This can be used to adjust your application's UI so that the content won't overlap the banner, or for any other action you might need to take when the connectivy drops.
 
 ## 📝 Requirements
 
@@ -32,15 +32,16 @@ import ReachabilityUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    public var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
+    public var reachabilityListenerFactory: ReachabilityListenerFactoryProtocol!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        reachabilityListenerFactoryProtocol = ReachabilityUIManager()
+        reachabilityListenerFactory = ReachabilityUIManager()
 
         return true
     }
 }
+
 extension AppDelegate: HasReachabilityListenerRepository {}
 ```
 
@@ -51,20 +52,25 @@ To be able to get the Reachability banner on top of your views, in your `AppDele
 ```swift
 private func addReachability() {
     // create a ReachabilityConfiguration instance  
-    let configuration = ReachabilityConfiguration(noConnectionTitle: "No Connection",
-    noConnectionTitleColor: .white,
-    noConnectionBackgroundColor: UIColor.red.withAlphaComponent(0.6),
-    title: "Connected",
-    titleColor: .white,
-    backgroundColor: UIColor.green.withAlphaComponent(0.6),
-    height: 30,
-    font: UIFont.systemFont(ofSize: 12),
-    textAlignment: .center)
+    let configuration = ReachabilityConfiguration(
+        noConnectionTitle: "No Connection",
+        noConnectionTitleColor: .white,
+        noConnectionBackgroundColor: UIColor.red.withAlphaComponent(0.6),
+        title: "Connected",
+        titleColor: .white,
+        backgroundColor: UIColor.green.withAlphaComponent(0.6),
+        height: 30,
+        font: UIFont.systemFont(ofSize: 12),
+        textAlignment: .center
+    )
 
     // create the ReachabilityCoordinator and pass it along the previously
     // created ReachabilityConfiguration together with the ReachabilityListenerFactoryProtocol
-    let coordinator = ReachabilityCoordinator(window: window,
-    reachabilityListenerFactoryProtocol: dependencies.reachabilityListenerFactoryProtocol, with: configuration)
+    let coordinator = ReachabilityCoordinator(
+        window: window,
+        reachabilityListenerFactory: reachabilityListenerFactory,
+        configuration: configuration
+    )
     reachabilityCoordinator = coordinator
     coordinator.start()
 }
@@ -76,10 +82,9 @@ private func addReachability() {
 private var listener: ReachabilityListenerProtocol!
 
 func subscribe() {
-    let listener = reachabilityListenerFactoryProtocol.makeListener()
-    self.listener = listener
+    listener = reachabilityListenerFactory.makeListener()
     listener.listen { [weak self] (isConnected) in
-        self?.output?.present(World.ReachabilityListener.Response(isConnected: isConnected))
+        // TODO: react to change in connected state
     }
 }
 
