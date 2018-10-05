@@ -26,11 +26,19 @@
                                 </constraints>
                                 <state key="normal" title="Close"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJ1-07-DoF">
+                                <rect key="frame" x="176" y="333" width="23" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1Nf-2o-IOX" firstAttribute="top" secondItem="Fhz-5B-qaF" secondAttribute="top" constant="15" id="XoP-3R-CZf"/>
                             <constraint firstItem="1Nf-2o-IOX" firstAttribute="leading" secondItem="Fhz-5B-qaF" secondAttribute="leading" constant="15" id="jSL-Ba-URa"/>
+                            <constraint firstItem="VJ1-07-DoF" firstAttribute="centerX" secondItem="Fhz-5B-qaF" secondAttribute="centerX" id="tSr-Us-kg1"/>
+                            <constraint firstItem="VJ1-07-DoF" firstAttribute="centerY" secondItem="Fhz-5B-qaF" secondAttribute="centerY" id="wXu-PD-uJa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fhz-5B-qaF"/>
                     </view>
