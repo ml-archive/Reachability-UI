@@ -25,7 +25,7 @@ class HelloCoordinator: Coordinator {
     }
 
     func start() {
-        let interactor = HelloInteractor(reachabilityListenerFactoryProtocol: dependencies.reachabilityListenerFactoryProtocol)
+        let interactor = HelloInteractor(reachabilityListenerFactory: dependencies.reachabilityListenerFactory)
         let presenter = HelloPresenter(interactor: interactor, coordinator: self)
         let vc = HelloViewController.instantiate(with: presenter)
 
@@ -40,7 +40,7 @@ class HelloCoordinator: Coordinator {
 extension HelloCoordinator: HelloCoordinatorInput {
     func presentUniversalVC() {
         let coordinator = UniversalGreetingCoordinator(navigationController: navigationController,
-                                                       reachabilityListenerFactoryProtocol: dependencies.reachabilityListenerFactoryProtocol)
+                                                       reachabilityListenerFactory: dependencies.reachabilityListenerFactory)
         coordinator.delegate = self
         children.append(coordinator)
         coordinator.start()

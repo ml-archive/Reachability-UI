@@ -28,7 +28,7 @@ protocol ReachabilityDelegate: class {
 }
 
 public protocol HasReachabilityListenerRepository {
-    var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol { get set }
+    var reachabilityListenerFactory: ReachabilityListenerFactoryProtocol { get set }
 }
 
 public final class ReachabilityUIManager: ReachabilityListenerRepository {

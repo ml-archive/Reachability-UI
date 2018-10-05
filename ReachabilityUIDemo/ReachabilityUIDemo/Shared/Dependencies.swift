@@ -15,10 +15,10 @@ typealias FullDependencies =
 
 struct Dependencies {
     public static let shared = Dependencies()
-    public var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
+    public var reachabilityListenerFactory: ReachabilityListenerFactoryProtocol
     
     init() {
-        reachabilityListenerFactoryProtocol = ReachabilityUIManager()
+        reachabilityListenerFactory = ReachabilityUIManager()
     }
     
 }

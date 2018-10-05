@@ -12,14 +12,14 @@ class ReachabilityInteractor {
     // MARK: - Properties
     
     weak var output: ReachabilityInteractorOutput?
-    private var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
+    private var reachabilityListenerFactory: ReachabilityListenerFactoryProtocol
     private var listener: ReachabilityListenerProtocol!
     
     
     // MARK: - Init
     
-    init(reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol) {
-        self.reachabilityListenerFactoryProtocol = reachabilityListenerFactoryProtocol
+    init(reachabilityListenerFactory: ReachabilityListenerFactoryProtocol) {
+        self.reachabilityListenerFactory = reachabilityListenerFactory
     }
     
 }
@@ -29,7 +29,7 @@ class ReachabilityInteractor {
 // PRESENTER -> INTERACTOR
 extension ReachabilityInteractor: ReachabilityInteractorInput {
     func perform(_ request:  Reachability.ReachabilityListener.Request) {
-        let listener = reachabilityListenerFactoryProtocol.makeListener()
+        let listener = reachabilityListenerFactory.makeListener()
         self.listener = listener
         listener.listen { [weak self] isConnected in
             self?.output?.present(Reachability.ReachabilityListener.Response(isConnected: isConnected))

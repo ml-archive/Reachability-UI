@@ -16,19 +16,19 @@ class UniversalGreetingCoordinator: Coordinator {
     
     let navigationController: UINavigationController
     var children: [Coordinator] = []
-    var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
+    var reachabilityListenerFactory: ReachabilityListenerFactoryProtocol
     weak var delegate: UniversalGreetingCoordinatorDelegate?
 
     // MARK: - Init
     
     init(navigationController: UINavigationController,
-         reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol) {
+         reachabilityListenerFactory: ReachabilityListenerFactoryProtocol) {
         self.navigationController = navigationController
-        self.reachabilityListenerFactoryProtocol = reachabilityListenerFactoryProtocol
+        self.reachabilityListenerFactory = reachabilityListenerFactory
     }
 
     func start() {
-        let interactor = UniversalGreetingInteractor(reachabilityListenerFactoryProtocol: reachabilityListenerFactoryProtocol)
+        let interactor = UniversalGreetingInteractor(reachabilityListenerFactory: reachabilityListenerFactory)
         let presenter = UniversalGreetingPresenter(interactor: interactor, coordinator: self)
         let vc = UniversalGreetingViewController.instantiate(with: presenter)
 

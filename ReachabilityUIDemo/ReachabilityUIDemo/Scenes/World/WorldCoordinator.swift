@@ -25,7 +25,7 @@ class WorldCoordinator: Coordinator {
     }
 
     func start() {
-        let interactor = WorldInteractor(reachabilityListenerFactoryProtocol: dependencies.reachabilityListenerFactoryProtocol)
+        let interactor = WorldInteractor(reachabilityListenerFactory: dependencies.reachabilityListenerFactory)
         let presenter = WorldPresenter(interactor: interactor, coordinator: self)
         let vc = WorldViewController.instantiate(with: presenter)
 
