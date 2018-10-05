@@ -88,12 +88,10 @@ public final class ReachabilityManager: ReachabilityRepository {
         // Registers the callback. `callbackClosure` is the closure where we manage the callback implementation
         if !SCNetworkReachabilitySetCallback(reachability, callbackClosure, &context) {
             // Not able to set the callback
-            print("lolololo2")
         }
         // Sets the dispatch queue which is `DispatchQueue.main` for this example. It can be also a background queue
         if !SCNetworkReachabilitySetDispatchQueue(reachability, queue) {
             // Not able to set the queue
-            print("lolololo")
         }
         // Runs the first time to set the current flags
         queue.async {
