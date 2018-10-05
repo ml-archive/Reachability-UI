@@ -13,7 +13,7 @@ class UniversalGreetingInteractor {
     // MARK: - Properties
     weak var output: UniversalGreetingInteractorOutput?
     private var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
-    private var listener: ReachabilityListenerProtocol!
+    private var listener: ReachabilityListener!
     // MARK: - Init
     
     init(reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol) {
@@ -31,7 +31,6 @@ class UniversalGreetingInteractor {
 extension UniversalGreetingInteractor: UniversalGreetingInteractorInput {
     func perform(_ request: UniversalGreeting.ReachabilityListener.Request) {
         let listener = reachabilityListenerFactoryProtocol.makeListener()
-        self.listener = listener
         listener.listen { [weak self] (isConnected) in
             self?.output?.present(UniversalGreeting.ReachabilityListener.Response(isConnected: isConnected))
         }
