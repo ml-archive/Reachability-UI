@@ -11,24 +11,24 @@
 import Foundation
 import SystemConfiguration
 
-public protocol ReachabilityRepository: class {
-    func setup(_ reachabilityUIControlRepository: ReachabilityUIControlRepository)
+protocol ReachabilityRepository: class {
+    func setup(_ reachabilityDelegate: ReachabilityDelegate)
 }
 
-public protocol HasReachabilityRepository {
+protocol HasReachabilityRepository {
     var reachabilityRepository: ReachabilityRepository { get set }
 }
 
-public final class ReachabilityManager: ReachabilityRepository {
+final class ReachabilityManager: ReachabilityRepository {
     
     public static let shared = ReachabilityManager()
     
-    private var reachabilityUIControlRepository: ReachabilityUIControlRepository?
+    private var reachabilityDelegate: ReachabilityDelegate?
     
     private var isConnected = false {
         didSet {
-            guard reachabilityUIControlRepository != nil else { return }
-            reachabilityUIControlRepository?.networkStatusChanged(isConnected)
+            guard reachabilityDelegate != nil else { return }
+            reachabilityDelegate?.networkStatusChanged(isConnected)
         }
     }
     
@@ -50,7 +50,7 @@ public final class ReachabilityManager: ReachabilityRepository {
     
     // MARK: - Init
     
-    public init() {
+    init() {
         start()
     }
     
@@ -60,8 +60,8 @@ public final class ReachabilityManager: ReachabilityRepository {
     
     // MARK: - Setup
     
-    public func setup(_ reachabilityUIControlRepository: ReachabilityUIControlRepository) {
-        self.reachabilityUIControlRepository = reachabilityUIControlRepository
+    func setup(_ reachabilityDelegate: ReachabilityDelegate) {
+        self.reachabilityDelegate = reachabilityDelegate
     }
     
     // MARK: - Reachability Logic
@@ -88,12 +88,10 @@ public final class ReachabilityManager: ReachabilityRepository {
         // Registers the callback. `callbackClosure` is the closure where we manage the callback implementation
         if !SCNetworkReachabilitySetCallback(reachability, callbackClosure, &context) {
             // Not able to set the callback
-            print("lolololo2")
         }
         // Sets the dispatch queue which is `DispatchQueue.main` for this example. It can be also a background queue
         if !SCNetworkReachabilitySetDispatchQueue(reachability, queue) {
             // Not able to set the queue
-            print("lolololo")
         }
         // Runs the first time to set the current flags
         queue.async {

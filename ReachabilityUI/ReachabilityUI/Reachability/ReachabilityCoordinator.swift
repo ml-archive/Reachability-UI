@@ -13,7 +13,7 @@ public class ReachabilityCoordinator {
     // MARK: - Properties
     private let window: UIWindow
 
-    private var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository
+    private var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
     var hasNavigationBar: Bool
     private var configuration: ReachabilityConfiguration
     private var vc: ReachabilityViewController! //prevent ViewController from deallocating by holding a reference
@@ -27,10 +27,10 @@ public class ReachabilityCoordinator {
     ///    - dependencies
     ///    - height of the UIViewController. Default value is 30
     ///
-    public init(window: UIWindow, reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository, hasNavigationBar: Bool = true, with configuration: ReachabilityConfiguration) {
+    public init(window: UIWindow, reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol, hasNavigationBar: Bool = true, with configuration: ReachabilityConfiguration) {
         self.window = window
         self.hasNavigationBar = hasNavigationBar
-        self.reachabilityUIEmbedableRepository = reachabilityUIEmbedableRepository
+        self.reachabilityListenerFactoryProtocol = reachabilityListenerFactoryProtocol
         self.configuration = configuration
     }
 
@@ -38,7 +38,7 @@ public class ReachabilityCoordinator {
     /// ReachabilityViewController to the window
     ///
     public func start() {
-        let interactor = ReachabilityInteractor(reachabilityUIEmbedableRepository: reachabilityUIEmbedableRepository)
+        let interactor = ReachabilityInteractor(reachabilityListenerFactoryProtocol: reachabilityListenerFactoryProtocol)
         let presenter = ReachabilityPresenter(interactor: interactor,
                                               coordinator: self)
         let vc = ReachabilityViewController.instantiate(with: presenter,

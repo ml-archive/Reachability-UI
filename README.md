@@ -1,7 +1,6 @@
 [![Carthage Compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Plaforms](https://img.shields.io/badge/platforms-iOS%20-lightgrey.svg)
-![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
-
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nodes-ios/Reachability-UI/blob/master/LICENSE)
 ### Intro
 
 Demo Project + Framework showcasing the integration of the ReachabilityUI framework in a Nodes like VIPER architecture.
@@ -25,32 +24,24 @@ github "nodes-ios/Reachability-UI"
 
 #### Initialise the ReachabilityUI dependencies
 
-In your Dependencies struct, or wherever you initialise your dependencies, conform to the ReachabilityUI protocols `HasReachabilityUIRepository` and `HasReachabilityRepository` as follows: 
+Conform to `HasReachabilityListenerRepository` and create a `ReachabilityUIManager` instance:
 
 ```
-struct Dependencies {
-    public static let shared = Dependencies()
+import UIKit
+import ReachabilityUI
 
-    public var reachabilityRepository: ReachabilityRepository
-    public var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository
-    public var reachabilityUIControlRepository: ReachabilityUIControlRepository
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    public var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
 
-    init() {
-        // create an instance of ReachabilityUIManager, this will later be used to get notified of the connectivity change.    
-        // Using this you will be able to adjust your layout, in such a way, that it won't overlap the content of your 
-        // that it won't overlap the content of your  application.
-        let reachabilityUIManager = ReachabilityUIManager()
-        reachabilityUIEmbedableRepository = reachabilityUIManager
-        reachabilityUIControlRepository = reachabilityUIManager
-        // create an instance of ReachabilityManager, and call the setup function with your ReachabilityUIManager.
-        // This will allow the ReachabilityUIManager to get notified about connectivity changes
-        reachabilityRepository = ReachabilityManager()
-        reachabilityRepository.setup(reachabilityUIManager)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        reachabilityListenerFactoryProtocol = ReachabilityUIManager()
+
+        return true
     }
-
 }
-
-extension Dependencies: HasReachabilityUIRepository, HasReachabilityRepository {}
+extension AppDelegate: HasReachabilityListenerRepository {}
 ```
 
 #### Initialise the ReachabilityUI banner 
@@ -58,10 +49,6 @@ extension Dependencies: HasReachabilityUIRepository, HasReachabilityRepository {
 To be able to get the Reachability banner on top of your views, in your `AppDelegate.swift` you will need to add the following code snippet: 
 
 ```
-import ReachabilityUI
-
-private var reachabilityCoordinator: ReachabilityCoordinator!
-
 private func addReachability() {
     // create a ReachabilityConfiguration instance  
     let configuration = ReachabilityConfiguration(noConnectionTitle: "No Connection",
@@ -73,33 +60,29 @@ private func addReachability() {
     height: 30,
     font: UIFont.systemFont(ofSize: 12),
     textAlignment: .center)
-    
-    // create the ReachabilityCoordinator and pass it along the previously created ReachabilityConfiguration together with the ReachabilityUIEmbedableRepository
+
+    // create the ReachabilityCoordinator and pass it along the previously
+    // created ReachabilityConfiguration together with the ReachabilityUIEmbedableRepository
     let coordinator = ReachabilityCoordinator(window: window,
-    reachabilityUIEmbedableRepository: dependencies.reachabilityUIEmbedableRepository,
-    with: configuration)
+    reachabilityListenerFactoryProtocol: dependencies.reachabilityListenerFactoryProtocol, with: configuration)
     reachabilityCoordinator = coordinator
     coordinator.start()
 }
 ```
 
-#### Subscribe to ReachabilityUI notification in order to get notified about the connectivity change and adjust your layout. 
+#### Subscribe to ReachabilityUI callback in order to get notified about the connectivity change and adjust your layout. 
 
 ```
+private var listener: ReachabilityListenerProtocol!
+
 func subscribe() {
-    // create a ReachabilityListener and register it by calling your previously
-    // created ReachabilityUIEmbedableRepository's addListener function 
-    // this function takes the listener and a listener id
-    let listener: ReachabilityListener = { [weak self] isConnected in
-    self?.output?.present(World.ReachabilityListener.Response(isConnected: isConnected))
+    let listener = reachabilityListenerFactoryProtocol.makeListener()
+    self.listener = listener
+    listener.listen { [weak self] (isConnected) in
+        self?.output?.present(World.ReachabilityListener.Response(isConnected: isConnected))
     }
-    reachabilityUIEmbedableRepository.addListener(listener: listener, for: "\(self)")
 }
 
-// in your deinit, remove the reference to the listener
-deinit {
-    reachabilityUIEmbedableRepository.removeListener(for: "\(self)")
-}
 ```
 
 ## 👥 Credits
@@ -108,4 +91,4 @@ Made with ❤️ at [Nodes](http://nodesagency.com).
 Reachability logic is as presented by Marco Santarossa on https://medium.com/@marcosantadev/network-reachability-with-swift-576ca5070e4b
 
 ## 📄 License
-**Reachability-UI** is available under the MIT license. See the [LICENSE](https://github.com/nodes-ios/Serpent/blob/master/LICENSE) file for more info.
+**Reachability-UI** is available under the MIT license. See the [LICENSE](https://github.com/nodes-ios/Reachability-UI/blob/master/LICENSE) file for more info.

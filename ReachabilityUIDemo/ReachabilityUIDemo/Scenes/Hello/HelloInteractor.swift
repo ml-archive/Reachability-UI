@@ -14,17 +14,15 @@ class HelloInteractor {
     // MARK: - Properties
     
     weak var output: HelloInteractorOutput?
-    private var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository
+    private var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
+    private var listener: ReachabilityListenerProtocol!
 
     // MARK: - Init
     
-    init(reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository) {
-        self.reachabilityUIEmbedableRepository = reachabilityUIEmbedableRepository
+    init(reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol) {
+        self.reachabilityListenerFactoryProtocol = reachabilityListenerFactoryProtocol
     }
-    
-    deinit {
-        reachabilityUIEmbedableRepository.removeListener(for: "\(HelloInteractor.self)")
-    }
+
 }
 
 // MARK: - Business Logic -
@@ -32,10 +30,11 @@ class HelloInteractor {
 // PRESENTER -> INTERACTOR
 extension HelloInteractor: HelloInteractorInput {
     func perform(_ request: Hello.ReachabilityListener.Request) {
-        let listener: ReachabilityListener = { [weak self] isConnected in
+        let listener = reachabilityListenerFactoryProtocol.makeListener()
+        self.listener = listener
+        listener.listen { [weak self] (isConnected) in
             self?.output?.present(Hello.ReachabilityListener.Response(isConnected: isConnected))
         }
-        reachabilityUIEmbedableRepository.addListener(listener: listener, for: "\(HelloInteractor.self)")
     }
     
 }

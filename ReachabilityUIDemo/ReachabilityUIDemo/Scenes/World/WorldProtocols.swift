@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-// ======== Coordinator ======== //
-
-//protocol WorldCoordinatorDelegate: class {
-//    func coordinator(_ coordinator: Coordinator, finishedWithSuccess success: Bool)
-//}
-
 // PRESENTER -> COORDINATOR
 protocol WorldCoordinatorInput: class {
 }

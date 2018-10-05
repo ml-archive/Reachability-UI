@@ -13,6 +13,7 @@ import UIKit
 
 // PRESENTER -> COORDINATOR
 protocol HelloCoordinatorInput: class {
+    func presentUniversalVC()
 }
 
 // ======== Interactor ======== //
@@ -34,6 +35,7 @@ protocol HelloPresenterInput {
     func viewCreated()
     var rowCount: Int { get }
     func configure(_ view: GreetingCellInputDelegate, indexPath: IndexPath)
+    func didSelect()
 }
 
 // PRESENTER -> VIEW
