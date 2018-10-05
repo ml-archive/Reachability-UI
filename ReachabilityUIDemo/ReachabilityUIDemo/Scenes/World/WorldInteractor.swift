@@ -14,7 +14,7 @@ class WorldInteractor {
     
     weak var output: WorldInteractorOutput?
     private var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
-    private var listener: ReachabilityListener!
+    private var listener: ReachabilityListenerProtocol!
     // MARK: - Init
     
     init(reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol) {
@@ -29,6 +29,7 @@ class WorldInteractor {
 extension WorldInteractor: WorldInteractorInput {
     func perform(_ request: World.ReachabilityListener.Request) {
         let listener = reachabilityListenerFactoryProtocol.makeListener()
+        self.listener = listener
         listener.listen { [weak self] (isConnected) in
             self?.output?.present(World.ReachabilityListener.Response(isConnected: isConnected))
         }

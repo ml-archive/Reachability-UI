@@ -15,7 +15,7 @@ class HelloInteractor {
     
     weak var output: HelloInteractorOutput?
     private var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
-    private var listener: ReachabilityListener!
+    private var listener: ReachabilityListenerProtocol!
     
     // MARK: - Init
     
@@ -31,6 +31,7 @@ class HelloInteractor {
 extension HelloInteractor: HelloInteractorInput {
     func perform(_ request: Hello.ReachabilityListener.Request) {
         let listener = reachabilityListenerFactoryProtocol.makeListener()
+        self.listener = listener
         listener.listen { [weak self] (isConnected) in
             self?.output?.present(Hello.ReachabilityListener.Response(isConnected: isConnected))
         }
