@@ -17,6 +17,7 @@
 		42726B0B21665E4B00863414 /* ReachabilityProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42726B0221665E4B00863414 /* ReachabilityProtocols.swift */; };
 		42726B0C21665E4B00863414 /* ReachabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42726B0321665E4B00863414 /* ReachabilityViewController.swift */; };
 		42726B0D21665E4B00863414 /* ReachabilityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42726B0421665E4B00863414 /* ReachabilityInteractor.swift */; };
+		42726B102167710900863414 /* ReachabilityListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42726B0F2167710900863414 /* ReachabilityListener.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		42726B0221665E4B00863414 /* ReachabilityProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityProtocols.swift; sourceTree = "<group>"; };
 		42726B0321665E4B00863414 /* ReachabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityViewController.swift; sourceTree = "<group>"; };
 		42726B0421665E4B00863414 /* ReachabilityInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityInteractor.swift; sourceTree = "<group>"; };
+		42726B0F2167710900863414 /* ReachabilityListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		42726AC921665DCD00863414 /* ReachabilityUI */ = {
 			isa = PBXGroup;
 			children = (
+				42726B0E2167704700863414 /* Model */,
 				42726AFD21665E4B00863414 /* Reachability */,
 				42726AFA21665E4B00863414 /* Shared */,
 				42726ACA21665DCD00863414 /* ReachabilityUI.h */,
@@ -93,6 +96,14 @@
 				42726B0421665E4B00863414 /* ReachabilityInteractor.swift */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		42726B0E2167704700863414 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42726B0F2167710900863414 /* ReachabilityListener.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				42726B0621665E4B00863414 /* RechabilityUIRepository.swift in Sources */,
 				42726B0B21665E4B00863414 /* ReachabilityProtocols.swift in Sources */,
 				42726B0521665E4B00863414 /* ReachabilityRepository.swift in Sources */,
+				42726B102167710900863414 /* ReachabilityListener.swift in Sources */,
 				42726B0C21665E4B00863414 /* ReachabilityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

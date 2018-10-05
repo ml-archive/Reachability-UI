@@ -1,5 +1,5 @@
 //
-//  ReachabilityUIRepository.swift
+//  ReachabilityListenerRepository.swift
 //  ReachabilityUIDemo
 //
 //  Created by Andrei Hogea on 03/10/2018.
@@ -8,30 +8,39 @@
 
 import Foundation
 
-public typealias ReachabilityListener = (_ isConnected: Bool) -> Void
+public typealias Listener = (_ isConnected: Bool) -> Void
 
-public protocol ReachabilityUIRepository: class {
-    func addListener(listener: @escaping ReachabilityListener, for id: String)
-    func removeListener(for id: String)
+// MARK: - Public protocols
+
+public protocol ReachabilityListenerFactoryProtocol: class {
+    func makeListener() -> ReachabilityListenerProtocol
+}
+
+// MARK: - Internal protocols
+
+protocol ReachabilityListenerRepository: class {
+    func addListener(_ listener: @escaping Listener, id: Int)
+    func removeListener(for id: Int)
 }
 
 protocol ReachabilityDelegate: class {
     func networkStatusChanged(_ isConnected: Bool)
 }
 
-public protocol HasReachabilityUIRepository {
-    var reachabilityUIRepository: ReachabilityUIRepository { get set }
+public protocol HasReachabilityListenerRepository {
+    var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol { get set }
 }
 
-public final class ReachabilityUIManager: ReachabilityUIRepository {
+public final class ReachabilityUIManager: ReachabilityListenerRepository {
     public static let shared = ReachabilityUIManager()
     
+    private var listenerCount: Int = 0
     private var isConnected = false {
         didSet {
             notify()
         }
     }
-    private var listeners: [String: ReachabilityListener] = [:]
+    private var listeners: [Int: Listener] = [:]
     
     // MARK: - Init
     
@@ -42,12 +51,12 @@ public final class ReachabilityUIManager: ReachabilityUIRepository {
     
     // MARK: - Listeners
     
-    public func addListener(listener: @escaping ReachabilityListener, for id: String) {
+    func addListener(_ listener: @escaping Listener, id: Int) {
         listeners[id] = listener
         notify()
     }
     
-    public func removeListener(for id: String) {
+    func removeListener(for id: Int) {
         listeners[id] = nil
     }
     
@@ -57,6 +66,16 @@ public final class ReachabilityUIManager: ReachabilityUIRepository {
         }
     }
 }
+
+// MARK: - ReachabilityDelegate
+
+extension ReachabilityUIManager: ReachabilityListenerFactoryProtocol {
+    public func makeListener() -> ReachabilityListenerProtocol {
+        listenerCount += 1
+        return ReachabilityListener(ReachabilityListenerRepository: self, id: listenerCount)
+    }
+}
+
 
 // MARK: - ReachabilityDelegate
 

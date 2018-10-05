@@ -216,11 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42BDD04E2164E1570090F1F3 /* Build configuration list for PBXNativeTarget "ReachabilityUIDemo" */;
 			buildPhases = (
+				42F9A95921665A9200A40B43 /* Carthage */,
 				42BDD0382164E1550090F1F3 /* Sources */,
 				42BDD0392164E1550090F1F3 /* Frameworks */,
 				42BDD03A2164E1550090F1F3 /* Resources */,
 				42F9A94C21663CC500A40B43 /* Embed Frameworks */,
-				42F9A95921665A9200A40B43 /* Carthage */,
 			);
 			buildRules = (
 			);

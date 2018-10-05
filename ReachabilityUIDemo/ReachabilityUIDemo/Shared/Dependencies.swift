@@ -11,25 +11,20 @@ import Foundation
 import ReachabilityUI
 
 typealias FullDependencies =
-    HasReachabilityUIRepository & HasReachabilityRepository
+    HasReachabilityUIRepository
 
 struct Dependencies {
     public static let shared = Dependencies()
     
-    public var reachabilityRepository: ReachabilityRepository
-    public var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository
-    public var reachabilityUIControlRepository: ReachabilityUIControlRepository
+    public var reachabilityUIEmbedableRepository: ReachabilityUIRepository
     
     init() {
         let reachabilityUIManager = ReachabilityUIManager()
-        reachabilityUIEmbedableRepository = reachabilityUIManager
-        reachabilityUIControlRepository = reachabilityUIManager
-        reachabilityRepository = ReachabilityManager()
-        reachabilityRepository.setup(reachabilityUIManager)
+        reachabilityUIRepository = reachabilityUIManager
     }
     
 }
 
-extension Dependencies: HasReachabilityUIRepository, HasReachabilityRepository {
+extension Dependencies: HasReachabilityUIRepository {
 
 }
