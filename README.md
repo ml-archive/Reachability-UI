@@ -1,3 +1,7 @@
+[![Carthage Compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![Plaforms](https://img.shields.io/badge/platforms-iOS%20-lightgrey.svg)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)]
+
 ### Intro
 
 Demo Project + Framework showcasing the integration of the ReachabilityUI framework in a Nodes like VIPER architecture.
@@ -5,18 +9,19 @@ Demo Project + Framework showcasing the integration of the ReachabilityUI framew
 ReachabilityUI is a framework that is meant to help displaying the Network connection banner when the user looses connection to the internet in an app.
 With ReachabilityUI you can even register a `ReachabilityListener` instance that will allow you to get notified about the connection drop. This can be used to ajust your application's UI so that the content won't overlap the banner, or for any other action you might need to take when the connectivy drops.
 
-### Requirements
+## 📝 Requirements
 
 - iOS 11
 - Swift 4.0+
 
-### Instalation 
+## 📦 Installation
 
-#### Carthage 
+### Carthage 
+~~~bash
+github "nodes-ios/Reachability-UI"
+~~~
 
-`github "nodes-ios/Reachability-UI"`
-
-### Usage 
+## 💻 Usage
 
 #### Initialise the ReachabilityUI dependencies
 
@@ -97,9 +102,10 @@ deinit {
 }
 ```
 
-
-### Credits
-
-@anho (Andrei Hogea)
+## 👥 Credits
+Made with ❤️ at [Nodes](http://nodesagency.com).
 
 Reachability logic is as presented by Marco Santarossa on https://medium.com/@marcosantadev/network-reachability-with-swift-576ca5070e4b
+
+## 📄 License
+**Reachability-UI** is available under the MIT license. See the [LICENSE](https://github.com/nodes-ios/Serpent/blob/master/LICENSE) file for more info.
