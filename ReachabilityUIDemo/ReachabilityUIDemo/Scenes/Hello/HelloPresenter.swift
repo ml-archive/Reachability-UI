@@ -28,6 +28,10 @@ class HelloPresenter {
 // MARK: - User Events -
 
 extension HelloPresenter: HelloPresenterInput {
+    func didSelect() {
+        coordinator?.presentUniversalVC()
+    }
+    
     func viewCreated() {
         interactor.perform(Hello.ReachabilityListener.Request())
     }

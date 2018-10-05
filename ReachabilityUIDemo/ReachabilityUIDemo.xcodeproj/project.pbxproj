@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42615933216779A200876C3E /* ReachabilityUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42615932216779A200876C3E /* ReachabilityUI.framework */; };
+		4261593C21677ADD00876C3E /* UniversalGreetingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261593521677ADD00876C3E /* UniversalGreetingCoordinator.swift */; };
+		4261593D21677ADD00876C3E /* UniversalGreetingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261593621677ADD00876C3E /* UniversalGreetingPresenter.swift */; };
+		4261593E21677ADD00876C3E /* UniversalGreetingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4261593721677ADD00876C3E /* UniversalGreetingViewController.storyboard */; };
+		4261593F21677ADD00876C3E /* UniversalGreetingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261593821677ADD00876C3E /* UniversalGreetingModels.swift */; };
+		4261594021677ADD00876C3E /* UniversalGreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261593921677ADD00876C3E /* UniversalGreetingViewController.swift */; };
+		4261594121677ADD00876C3E /* UniversalGreetingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261593A21677ADD00876C3E /* UniversalGreetingProtocols.swift */; };
+		4261594221677ADD00876C3E /* UniversalGreetingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261593B21677ADD00876C3E /* UniversalGreetingInteractor.swift */; };
 		42BDD0402164E1550090F1F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BDD03F2164E1550090F1F3 /* AppDelegate.swift */; };
 		42BDD0472164E1570090F1F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD0462164E1570090F1F3 /* Assets.xcassets */; };
 		42BDD04A2164E1570090F1F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BDD0482164E1570090F1F3 /* LaunchScreen.storyboard */; };
@@ -48,6 +56,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42615932216779A200876C3E /* ReachabilityUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReachabilityUI.framework; path = Carthage/Build/iOS/ReachabilityUI.framework; sourceTree = "<group>"; };
+		4261593521677ADD00876C3E /* UniversalGreetingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalGreetingCoordinator.swift; sourceTree = "<group>"; };
+		4261593621677ADD00876C3E /* UniversalGreetingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalGreetingPresenter.swift; sourceTree = "<group>"; };
+		4261593721677ADD00876C3E /* UniversalGreetingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniversalGreetingViewController.storyboard; sourceTree = "<group>"; };
+		4261593821677ADD00876C3E /* UniversalGreetingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalGreetingModels.swift; sourceTree = "<group>"; };
+		4261593921677ADD00876C3E /* UniversalGreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalGreetingViewController.swift; sourceTree = "<group>"; };
+		4261593A21677ADD00876C3E /* UniversalGreetingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalGreetingProtocols.swift; sourceTree = "<group>"; };
+		4261593B21677ADD00876C3E /* UniversalGreetingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalGreetingInteractor.swift; sourceTree = "<group>"; };
 		42BDD03C2164E1550090F1F3 /* ReachabilityUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReachabilityUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42BDD03F2164E1550090F1F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42BDD0462164E1570090F1F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,17 +98,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42615933216779A200876C3E /* ReachabilityUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42615931216779A200876C3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42615932216779A200876C3E /* ReachabilityUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4261593421677AB900876C3E /* Universal Greeting */ = {
+			isa = PBXGroup;
+			children = (
+				4261593521677ADD00876C3E /* UniversalGreetingCoordinator.swift */,
+				4261593621677ADD00876C3E /* UniversalGreetingPresenter.swift */,
+				4261593721677ADD00876C3E /* UniversalGreetingViewController.storyboard */,
+				4261593821677ADD00876C3E /* UniversalGreetingModels.swift */,
+				4261593921677ADD00876C3E /* UniversalGreetingViewController.swift */,
+				4261593A21677ADD00876C3E /* UniversalGreetingProtocols.swift */,
+				4261593B21677ADD00876C3E /* UniversalGreetingInteractor.swift */,
+			);
+			path = "Universal Greeting";
+			sourceTree = "<group>";
+		};
 		42BDD0332164E1550090F1F3 = {
 			isa = PBXGroup;
 			children = (
 				42BDD03E2164E1550090F1F3 /* ReachabilityUIDemo */,
 				42BDD03D2164E1550090F1F3 /* Products */,
+				42615931216779A200876C3E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +190,7 @@
 				42BDD05D2164E83D0090F1F3 /* TabBar */,
 				42BDD06E2164EC650090F1F3 /* Hello */,
 				42BDD07D2164F12A0090F1F3 /* World */,
+				4261593421677AB900876C3E /* Universal Greeting */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -273,6 +314,7 @@
 				42BDD0782164EC810090F1F3 /* HelloViewController.storyboard in Resources */,
 				42BDD04A2164E1570090F1F3 /* LaunchScreen.storyboard in Resources */,
 				42BDD0902164F6B30090F1F3 /* GreetingCell.xib in Resources */,
+				4261593E21677ADD00876C3E /* UniversalGreetingViewController.storyboard in Resources */,
 				42BDD0472164E1570090F1F3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +350,8 @@
 			files = (
 				42BDD07B2164EC810090F1F3 /* HelloProtocols.swift in Sources */,
 				42BDD0772164EC810090F1F3 /* HelloPresenter.swift in Sources */,
+				4261594121677ADD00876C3E /* UniversalGreetingProtocols.swift in Sources */,
+				4261594221677ADD00876C3E /* UniversalGreetingInteractor.swift in Sources */,
 				42BDD08E2164F69B0090F1F3 /* GreetingCell.swift in Sources */,
 				42BDD0892164F1450090F1F3 /* WorldViewController.swift in Sources */,
 				42BDD0562164E4890090F1F3 /* Dependencies.swift in Sources */,
@@ -318,12 +362,16 @@
 				42BDD0792164EC810090F1F3 /* HelloModels.swift in Sources */,
 				42BDD07C2164EC810090F1F3 /* HelloInteractor.swift in Sources */,
 				42BDD0882164F1450090F1F3 /* WorldModels.swift in Sources */,
+				4261593F21677ADD00876C3E /* UniversalGreetingModels.swift in Sources */,
 				42BDD08A2164F1450090F1F3 /* WorldProtocols.swift in Sources */,
 				42BDD0652164E8540090F1F3 /* TabBarCoordinator.swift in Sources */,
+				4261593C21677ADD00876C3E /* UniversalGreetingCoordinator.swift in Sources */,
 				42BDD0522164E4400090F1F3 /* Coordinator.swift in Sources */,
+				4261593D21677ADD00876C3E /* UniversalGreetingPresenter.swift in Sources */,
 				42BDD06D2164EBC50090F1F3 /* TabBarModels.swift in Sources */,
 				42F9A95821663F6100A40B43 /* Sizes.swift in Sources */,
 				42BDD0402164E1550090F1F3 /* AppDelegate.swift in Sources */,
+				4261594021677ADD00876C3E /* UniversalGreetingViewController.swift in Sources */,
 				42BDD0862164F1450090F1F3 /* WorldPresenter.swift in Sources */,
 				42BDD07A2164EC810090F1F3 /* HelloViewController.swift in Sources */,
 			);
@@ -466,6 +514,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW27H6H98R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ReachabilityUIDemo/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -486,6 +538,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HW27H6H98R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ReachabilityUIDemo/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

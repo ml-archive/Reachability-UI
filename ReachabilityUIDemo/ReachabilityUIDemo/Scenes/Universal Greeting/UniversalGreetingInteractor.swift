@@ -1,18 +1,17 @@
 //
-//  WorldInteractor.swift
+//  UniversalGreetingInteractor.swift
 //  ReachabilityUIDemo
 //
-//  Created by Andrei Hogea on 03/10/2018.
+//  Created by Andrei Hogea on 05/10/2018.
 //  Copyright (c) 2018 Nodes. All rights reserved.
 //
 
 import Foundation
 import ReachabilityUI
 
-class WorldInteractor {
+class UniversalGreetingInteractor {
     // MARK: - Properties
-    
-    weak var output: WorldInteractorOutput?
+    weak var output: UniversalGreetingInteractorOutput?
     private var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
     private var listener: ReachabilityListener!
     // MARK: - Init
@@ -20,17 +19,20 @@ class WorldInteractor {
     init(reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol) {
         self.reachabilityListenerFactoryProtocol = reachabilityListenerFactoryProtocol
     }
-
+    
+    deinit {
+        print("deinit gets called")
+    }
 }
 
 // MARK: - Business Logic -
 
 // PRESENTER -> INTERACTOR
-extension WorldInteractor: WorldInteractorInput {
-    func perform(_ request: World.ReachabilityListener.Request) {
+extension UniversalGreetingInteractor: UniversalGreetingInteractorInput {
+    func perform(_ request: UniversalGreeting.ReachabilityListener.Request) {
         let listener = reachabilityListenerFactoryProtocol.makeListener()
         listener.listen { [weak self] (isConnected) in
-            self?.output?.present(World.ReachabilityListener.Response(isConnected: isConnected))
+            self?.output?.present(UniversalGreeting.ReachabilityListener.Response(isConnected: isConnected))
         }
     }
 }
