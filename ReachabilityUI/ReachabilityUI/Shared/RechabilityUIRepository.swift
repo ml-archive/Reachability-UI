@@ -10,21 +10,20 @@ import Foundation
 
 public typealias ReachabilityListener = (_ isConnected: Bool) -> Void
 
-public protocol ReachabilityUIEmbedableRepository: class {
+public protocol ReachabilityUIRepository: class {
     func addListener(listener: @escaping ReachabilityListener, for id: String)
     func removeListener(for id: String)
 }
 
-public protocol ReachabilityUIControlRepository: class {
+protocol ReachabilityDelegate: class {
     func networkStatusChanged(_ isConnected: Bool)
 }
 
 public protocol HasReachabilityUIRepository {
-    var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository { get set }
-    var reachabilityUIControlRepository: ReachabilityUIControlRepository { get set }
+    var reachabilityUIRepository: ReachabilityUIRepository { get set }
 }
 
-public final class ReachabilityUIManager: ReachabilityUIEmbedableRepository {
+public final class ReachabilityUIManager: ReachabilityUIRepository {
     public static let shared = ReachabilityUIManager()
     
     private var isConnected = false {
@@ -36,7 +35,10 @@ public final class ReachabilityUIManager: ReachabilityUIEmbedableRepository {
     
     // MARK: - Init
     
-    public init() {}
+    public init() {
+        let reachabilityManager = ReachabilityManager()
+        reachabilityManager.setup(self)
+    }
     
     // MARK: - Listeners
     
@@ -56,8 +58,10 @@ public final class ReachabilityUIManager: ReachabilityUIEmbedableRepository {
     }
 }
 
-extension ReachabilityUIManager: ReachabilityUIControlRepository {
-    public func networkStatusChanged(_ isConnected: Bool) {
+// MARK: - ReachabilityDelegate
+
+extension ReachabilityUIManager: ReachabilityDelegate {
+    func networkStatusChanged(_ isConnected: Bool) {
         self.isConnected = isConnected
     }
 }

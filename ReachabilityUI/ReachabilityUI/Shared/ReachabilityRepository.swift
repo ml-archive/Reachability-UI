@@ -11,24 +11,24 @@
 import Foundation
 import SystemConfiguration
 
-public protocol ReachabilityRepository: class {
-    func setup(_ reachabilityUIControlRepository: ReachabilityUIControlRepository)
+protocol ReachabilityRepository: class {
+    func setup(_ reachabilityDelegate: ReachabilityDelegate)
 }
 
-public protocol HasReachabilityRepository {
+protocol HasReachabilityRepository {
     var reachabilityRepository: ReachabilityRepository { get set }
 }
 
-public final class ReachabilityManager: ReachabilityRepository {
+final class ReachabilityManager: ReachabilityRepository {
     
     public static let shared = ReachabilityManager()
     
-    private var reachabilityUIControlRepository: ReachabilityUIControlRepository?
+    private var reachabilityDelegate: ReachabilityDelegate?
     
     private var isConnected = false {
         didSet {
-            guard reachabilityUIControlRepository != nil else { return }
-            reachabilityUIControlRepository?.networkStatusChanged(isConnected)
+            guard reachabilityDelegate != nil else { return }
+            reachabilityDelegate?.networkStatusChanged(isConnected)
         }
     }
     
@@ -50,7 +50,7 @@ public final class ReachabilityManager: ReachabilityRepository {
     
     // MARK: - Init
     
-    public init() {
+    init() {
         start()
     }
     
@@ -60,8 +60,8 @@ public final class ReachabilityManager: ReachabilityRepository {
     
     // MARK: - Setup
     
-    public func setup(_ reachabilityUIControlRepository: ReachabilityUIControlRepository) {
-        self.reachabilityUIControlRepository = reachabilityUIControlRepository
+    func setup(_ reachabilityDelegate: ReachabilityDelegate) {
+        self.reachabilityDelegate = reachabilityDelegate
     }
     
     // MARK: - Reachability Logic

@@ -12,16 +12,16 @@ class ReachabilityInteractor {
     // MARK: - Properties
     
     weak var output: ReachabilityInteractorOutput?
-    private var reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository
+    private var reachabilityUIRepository: ReachabilityUIRepository
     
     // MARK: - Init
     
-    init(reachabilityUIEmbedableRepository: ReachabilityUIEmbedableRepository) {
-        self.reachabilityUIEmbedableRepository = reachabilityUIEmbedableRepository
+    init(reachabilityUIRepository: ReachabilityUIRepository) {
+        self.reachabilityUIRepository = reachabilityUIRepository
     }
     
     deinit {
-        reachabilityUIEmbedableRepository.removeListener(for: "\(ReachabilityInteractor.self)")
+        reachabilityUIRepository.removeListener(for: "\(ReachabilityInteractor.self)")
     }
 }
 
@@ -33,7 +33,7 @@ extension ReachabilityInteractor: ReachabilityInteractorInput {
         let listener: ReachabilityListener = { [weak self] isConnected in
             self?.output?.present(Reachability.ReachabilityListener.Response(isConnected: isConnected))
         }
-        reachabilityUIEmbedableRepository.addListener(listener: listener, for: "\(ReachabilityInteractor.self)")
+        reachabilityUIRepository.addListener(listener: listener, for: "\(ReachabilityInteractor.self)")
     }
     
 }
