@@ -34,6 +34,7 @@ public protocol HasReachabilityListenerRepository {
 public final class ReachabilityUIManager: ReachabilityListenerRepository {
     public static let shared = ReachabilityUIManager()
     
+    private var reachabilityManager: ReachabilityManager!
     private var listenerCount: Int = 0
     private var isConnected = false {
         didSet {
@@ -45,7 +46,7 @@ public final class ReachabilityUIManager: ReachabilityListenerRepository {
     // MARK: - Init
     
     public init() {
-        let reachabilityManager = ReachabilityManager()
+        reachabilityManager = ReachabilityManager()
         reachabilityManager.setup(self)
     }
     
