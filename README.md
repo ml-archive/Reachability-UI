@@ -26,7 +26,7 @@ github "nodes-ios/Reachability-UI"
 
 Conform to `HasReachabilityListenerRepository` and create a `ReachabilityUIManager` instance:
 
-```
+```swift
 import UIKit
 import ReachabilityUI
 
@@ -48,7 +48,7 @@ extension AppDelegate: HasReachabilityListenerRepository {}
 
 To be able to get the Reachability banner on top of your views, in your `AppDelegate.swift` you will need to add the following code snippet: 
 
-```
+```swift
 private func addReachability() {
     // create a ReachabilityConfiguration instance  
     let configuration = ReachabilityConfiguration(noConnectionTitle: "No Connection",
@@ -62,7 +62,7 @@ private func addReachability() {
     textAlignment: .center)
 
     // create the ReachabilityCoordinator and pass it along the previously
-    // created ReachabilityConfiguration together with the ReachabilityUIEmbedableRepository
+    // created ReachabilityConfiguration together with the ReachabilityListenerFactoryProtocol
     let coordinator = ReachabilityCoordinator(window: window,
     reachabilityListenerFactoryProtocol: dependencies.reachabilityListenerFactoryProtocol, with: configuration)
     reachabilityCoordinator = coordinator
@@ -72,7 +72,7 @@ private func addReachability() {
 
 #### Subscribe to ReachabilityUI callback in order to get notified about the connectivity change and adjust your layout. 
 
-```
+```swift
 private var listener: ReachabilityListenerProtocol!
 
 func subscribe() {
