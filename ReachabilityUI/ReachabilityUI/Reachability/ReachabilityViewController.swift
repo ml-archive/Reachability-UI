@@ -62,6 +62,7 @@ class ReachabilityViewController: UIViewController {
     public func addToContainer() {
         guard window != nil else { return }
         DispatchQueue.main.async {
+            self.view.frame = CGRect(x: 0, y: -self.configuration.height, width: self.window.frame.width, height: self.configuration.height)
             self.window.addSubview(self.view)
             self.view.bringSubviewToFront(self.window)
         }
