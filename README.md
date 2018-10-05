@@ -1,8 +1,9 @@
 ### Intro
 
-Demo Project + Framework showcasing how to integrate the ReachabilityUI framework in a Nodes like VIPER architecture.
+Demo Project + Framework showcasing the integration of the ReachabilityUI framework in a Nodes like VIPER architecture.
 
 ReachabilityUI is a framework that is meant to help displaying the Network connection banner when the user looses connection to the internet in an app.
+With ReachabilityUI you can even register a `ReachabilityListener` instance that will allow you to get notified about the connection drop. This can be used to ajust your application's UI so that the content won't overlap the banner, or for any other action you might need to take when the connectivy drops.
 
 ### Requirements
 
@@ -10,6 +11,8 @@ ReachabilityUI is a framework that is meant to help displaying the Network conne
 - Swift 4.0+
 
 ### Instalation 
+
+#### Carthage 
 
 `github "nodes-ios/Reachability-UI"`
 
