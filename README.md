@@ -1,6 +1,6 @@
 [![Carthage Compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Plaforms](https://img.shields.io/badge/platforms-iOS%20-lightgrey.svg)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)]
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ### Intro
 
