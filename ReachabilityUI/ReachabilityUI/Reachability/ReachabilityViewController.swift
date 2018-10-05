@@ -43,10 +43,12 @@ class ReachabilityViewController: UIViewController {
     
     // MARK: - Init
     
-    class func instantiate(with presenter: ReachabilityPresenterInput,
-                           window: UIWindow,
-                           hasNavigationBar: Bool,
-                           with configuration: ReachabilityConfiguration) -> ReachabilityViewController {
+    class func instantiate(
+        with presenter: ReachabilityPresenterInput,
+        window: UIWindow,
+        hasNavigationBar: Bool,
+        configuration: ReachabilityConfiguration
+        ) -> ReachabilityViewController {
         let name = "\(ReachabilityViewController.self)"
         let storyboardBundle = Bundle(for: ReachabilityViewController.self)
         let storyboard = UIStoryboard(name: name, bundle: storyboardBundle)

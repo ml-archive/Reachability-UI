@@ -13,7 +13,7 @@ public class ReachabilityCoordinator {
     // MARK: - Properties
     private let window: UIWindow
 
-    private var reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol
+    private var reachabilityListenerFactory: ReachabilityListenerFactoryProtocol
     var hasNavigationBar: Bool
     private var configuration: ReachabilityConfiguration
     private var vc: ReachabilityViewController! //prevent ViewController from deallocating by holding a reference
@@ -27,10 +27,10 @@ public class ReachabilityCoordinator {
     ///    - dependencies
     ///    - height of the UIViewController. Default value is 30
     ///
-    public init(window: UIWindow, reachabilityListenerFactoryProtocol: ReachabilityListenerFactoryProtocol, hasNavigationBar: Bool = true, with configuration: ReachabilityConfiguration) {
+    public init(window: UIWindow, reachabilityListenerFactory: ReachabilityListenerFactoryProtocol, hasNavigationBar: Bool = true, configuration: ReachabilityConfiguration) {
         self.window = window
         self.hasNavigationBar = hasNavigationBar
-        self.reachabilityListenerFactoryProtocol = reachabilityListenerFactoryProtocol
+        self.reachabilityListenerFactory = reachabilityListenerFactory
         self.configuration = configuration
     }
 
@@ -38,13 +38,13 @@ public class ReachabilityCoordinator {
     /// ReachabilityViewController to the window
     ///
     public func start() {
-        let interactor = ReachabilityInteractor(reachabilityListenerFactoryProtocol: reachabilityListenerFactoryProtocol)
+        let interactor = ReachabilityInteractor(reachabilityListenerFactory: reachabilityListenerFactory)
         let presenter = ReachabilityPresenter(interactor: interactor,
                                               coordinator: self)
         let vc = ReachabilityViewController.instantiate(with: presenter,
                                                         window: window,
                                                         hasNavigationBar: hasNavigationBar,
-                                                        with: configuration)
+                                                        configuration: configuration)
         self.vc = vc
 
         interactor.output = presenter

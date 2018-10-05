@@ -60,7 +60,7 @@ class TabBarCoordinator: Coordinator {
                                                       font: UIFont.systemFont(ofSize: 12),
                                                       textAlignment: .center)
         let coordinator = ReachabilityCoordinator(window: window,
-                                                  reachabilityListenerFactoryProtocol: dependencies.reachabilityListenerFactoryProtocol, with: configuration)
+                                                  reachabilityListenerFactory: dependencies.reachabilityListenerFactory, with: configuration)
         reachabilityCoordinator = coordinator
         coordinator.start()
     }
