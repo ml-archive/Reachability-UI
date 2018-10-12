@@ -23,7 +23,7 @@ class ReachabilityViewController: UIViewController {
         didSet {
             adjustLabelBasedOnConfiguration(state)
             DispatchQueue.main.async {
-                self.animatePositionChange(self.state)
+                self.animatePositionChange(self.state, animation: self.configuration.animation)
                 self.window.bringSubviewToFront(self.view)
             }
         }
@@ -96,18 +96,87 @@ class ReachabilityViewController: UIViewController {
         }
     }
     
-    private func animatePositionChange(_ state: State) {
+    private func animatePositionChange(_ state: State, animation: ReachabilityConfiguration.Animation) {
+        // change current alpha state
+        view.alpha = state == .hide ? 1 : 0
+        
+        // figure out View poistion
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         let navigationBarHeight = hasNavigationBar ? UINavigationController().navigationBar.frame.height : 0
         let finalY = state == .hide ? -configuration.height : statusBarHeight + navigationBarHeight
         
+        //figure out view alpha
+        let finalAlpha = state == .hide && (animation == .fadeInOut || animation == .slideAndFadeInOut) ? 0 : 1
+        
+        // set animation durations
         let animated = view.frame.height == configuration.height
         let animationDuration = animated ? 0.3 : 0.0
         let delay = state == .hide ? 0.75 : 0.0
- 
-            UIView.animate(withDuration: animationDuration, delay: delay, animations: {
-            self.view.frame = CGRect(x: 0, y: finalY, width: self.window.frame.width, height: self.configuration.height)
-            self.window.layoutIfNeeded()
+        
+        switch animation {
+        case .fadeInOut:
+            fadeInOut(state,
+                      delay: delay,
+                      duration: animationDuration,
+                      yPosition: finalY,
+                      alpha: finalAlpha)
+        case .slideInOut:
+            fadeInOut(state,
+                      delay: delay,
+                      duration: animationDuration,
+                      yPosition: finalY,
+                      alpha: finalAlpha)
+        case .slideAndFadeInOut:
+            fadeInOut(state,
+                      delay: delay,
+                      duration: animationDuration,
+                      yPosition: finalY,
+                      alpha: finalAlpha)
+        }
+    }
+    
+    private func fadeInOut(_ state: State, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
+        view.frame = CGRect(x: 0,
+                            y: yPosition,
+                            width: window.frame.width,
+                            height: configuration.height)
+        window.layoutIfNeeded()
+        
+        UIView.animate(withDuration: duration,
+                       delay: delay,
+                       animations:
+            {
+                self.view.alpha = state == .hide ? 0 : 1
+                self.window.layoutIfNeeded()
+        })
+    }
+    
+    private func slideInOut(_ state: State, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
+        view.alpha = 1
+        
+        UIView.animate(withDuration: duration,
+                       delay: delay,
+                       animations:
+            {
+                self.view.frame = CGRect(x: 0,
+                                         y: yPosition,
+                                         width: self.window.frame.width,
+                                         height: self.configuration.height)
+                self.window.layoutIfNeeded()
+        })
+    }
+    
+    private func slideAndFadeInOut(_ state: State, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
+        UIView.animate(withDuration: duration,
+                       delay: delay,
+                       animations:
+            {
+                self.view.alpha = state == .hide ? 0 : 1
+                self.view.frame = CGRect(x: 0,
+                                         y: yPosition,
+                                         width: self.window.frame.width,
+                                         height: self.configuration.height)
+                self.window.layoutIfNeeded()
         })
     }
     

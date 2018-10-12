@@ -34,6 +34,7 @@ public struct ReachabilityConfiguration {
     let height: CGFloat
     let font: UIFont
     let textAlignment: NSTextAlignment
+    let animation: Animation
     
     public init(noConnectionTitle: String,
                 noConnectionTitleColor: UIColor,
@@ -43,7 +44,8 @@ public struct ReachabilityConfiguration {
                 backgroundColor: UIColor,
                 height: CGFloat,
                 font: UIFont,
-                textAlignment: NSTextAlignment) {
+                textAlignment: NSTextAlignment,
+                animation: Animation) {
         self.noConnectionTitle = noConnectionTitle
         self.noConnectionTitleColor = noConnectionTitleColor
         self.noConnectionBackgroundColor = noConnectionBackgroundColor
@@ -53,5 +55,19 @@ public struct ReachabilityConfiguration {
         self.height = height
         self.font = font
         self.textAlignment = textAlignment
+        self.animation = animation
     }
+}
+
+extension ReachabilityConfiguration {
+    
+    public enum Animation {
+        /// the banner will appear/dissapear from the screen by changing the view's alpha value
+        case fadeInOut
+        /// the banner will appear/dissapear from the screen by moving it's frame on and off the view
+        case slideInOut
+        /// the banner will appear/dissapear from the screen by moving it's frame on and off the view while simulatiously changing it's alpha values
+        case slideAndFadeInOut
+    }
+    
 }
