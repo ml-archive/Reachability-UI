@@ -36,10 +36,13 @@ class TabBarCoordinator: Coordinator {
         self.tabBarController = vc
         
         addCoordinators()
-
-        UIView.transition(with: window, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.window.rootViewController = vc
-            self.addReachability()
+        
+        UIView.transition(with: window,
+                          duration: 0.2,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                            self.window.rootViewController = vc
+                            self.addReachability()
         }, completion: nil)
     }
     
@@ -58,9 +61,11 @@ class TabBarCoordinator: Coordinator {
                                                       backgroundColor: UIColor.green.withAlphaComponent(0.6),
                                                       height: 30,
                                                       font: UIFont.systemFont(ofSize: 12),
-                                                      textAlignment: .center)
+                                                      textAlignment: .center,
+                                                      animation: .fadeInOut)
         let coordinator = ReachabilityCoordinator(window: window,
-                                                  reachabilityListenerFactory: dependencies.reachabilityListenerFactory, configuration: configuration)
+                                                  reachabilityListenerFactory: dependencies.reachabilityListenerFactory,
+                                                  configuration: configuration)
         reachabilityCoordinator = coordinator
         coordinator.start()
     }
@@ -75,11 +80,17 @@ class TabBarCoordinator: Coordinator {
         
         switch type {
         case .hello:
-            coordinator = HelloCoordinator(navigationController: navigationController, dependencies: dependencies)
-            navigationController.tabBarItem = UITabBarItem(title: "Hello", image: nil, selectedImage: nil)
+            coordinator = HelloCoordinator(navigationController: navigationController,
+                                           dependencies: dependencies)
+            navigationController.tabBarItem = UITabBarItem(title: "Hello",
+                                                           image: nil,
+                                                           selectedImage: nil)
         case .world:
-            coordinator = WorldCoordinator(navigationController: navigationController, dependencies: dependencies)
-            navigationController.tabBarItem = UITabBarItem(title: "World", image: nil, selectedImage: nil)
+            coordinator = WorldCoordinator(navigationController: navigationController,
+                                           dependencies: dependencies)
+            navigationController.tabBarItem = UITabBarItem(title: "World",
+                                                           image: nil,
+                                                           selectedImage: nil)
         }
         
         children.append(coordinator)
