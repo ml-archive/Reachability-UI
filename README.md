@@ -61,7 +61,8 @@ private func addReachability() {
         backgroundColor: UIColor.green.withAlphaComponent(0.6),
         height: 30,
         font: UIFont.systemFont(ofSize: 12),
-        textAlignment: .center
+        textAlignment: .center,
+        animation: .fadeInOut)
     )
 
     // create the ReachabilityCoordinator and pass it along the previously
