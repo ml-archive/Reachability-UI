@@ -121,13 +121,13 @@ class ReachabilityViewController: UIViewController {
                       yPosition: finalY,
                       alpha: finalAlpha)
         case .slideInOut:
-            fadeInOut(state,
+            slideInOut(state,
                       delay: delay,
                       duration: animationDuration,
                       yPosition: finalY,
                       alpha: finalAlpha)
         case .slideAndFadeInOut:
-            fadeInOut(state,
+            slideAndFadeInOut(state,
                       delay: delay,
                       duration: animationDuration,
                       yPosition: finalY,
