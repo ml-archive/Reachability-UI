@@ -15,6 +15,11 @@ class ReachabilityViewController: UIViewController {
         case hide
     }
     
+    private enum StartingPoint {
+        case top
+        case bottom
+    }
+    
     // MARK: - Outlets
     
     @IBOutlet weak private var titleLabel: UILabel!
@@ -29,6 +34,7 @@ class ReachabilityViewController: UIViewController {
         }
     }
     private var hasNavigationBar: Bool = true
+    private var hasTabBar: Bool = false
     
     // MARK: - Properties
     
@@ -65,7 +71,17 @@ class ReachabilityViewController: UIViewController {
         guard window != nil else { return }
         DispatchQueue.main.async {
             let height = self.configuration.options[.height] as! CGFloat
-            self.view.frame = CGRect(x: 0, y: -height, width: self.window.frame.width, height: height)
+            let animationType = self.configuration.options[.animation] as! ReachabilityConfiguration.Animation
+            var yStartPosition:CGFloat = 0
+
+            switch animationType {
+            case .slideAndFadeInOutFromBottom, .slideInOutFromBottom:
+                yStartPosition = UIScreen.main.bounds.height + height
+            default:
+                yStartPosition = -height
+            }
+            self.view.frame = CGRect(x: 0, y: yStartPosition, width: self.window.frame.width, height: height)
+            
             self.window.addSubview(self.view)
             self.view.bringSubviewToFront(self.window)
         }
@@ -99,16 +115,29 @@ class ReachabilityViewController: UIViewController {
     
     private func animatePositionChange(_ state: State, animation: ReachabilityConfiguration.Animation) {
         let height = self.configuration.options[.height] as! CGFloat
+        let appearance = self.configuration.options[.appearance] as! ReachabilityConfiguration.Appearance
+        let appearanceAdjustment = self.configuration.options[.appearanceAdjustment] as! CGFloat
+        
         // change current alpha state
         view.alpha = state == .hide ? 1 : 0
         
         // figure out View poistion
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         let navigationBarHeight = hasNavigationBar ? UINavigationController().navigationBar.frame.height : 0
-        let finalY = state == .hide ? -height : statusBarHeight + navigationBarHeight
+        let screenBounds = UIScreen.main.bounds
+        var finalY: CGFloat = 0
+        
+        switch appearance {
+        case .top:
+            finalY = state == .hide ? -height : statusBarHeight + navigationBarHeight + appearanceAdjustment
+        case .center:
+            finalY = state == .hide ? -height : screenBounds.midY + appearanceAdjustment
+        case .bottom:
+            finalY = state == .hide ? -height : screenBounds.height - height + appearanceAdjustment
+        }
         
         //figure out view alpha
-        let finalAlpha = state == .hide && (animation == .fadeInOut || animation == .slideAndFadeInOut) ? 0 : 1
+        let finalAlpha = state == .hide && (animation == .fadeInOut || animation == .slideAndFadeInOutFromTop || animation == .slideAndFadeInOutFromBottom) ? 0 : 1
         
         // set animation durations
         let animated = view.frame.height == height
@@ -122,23 +151,38 @@ class ReachabilityViewController: UIViewController {
                       duration: animationDuration,
                       yPosition: finalY,
                       alpha: finalAlpha)
-        case .slideInOut:
+        case .slideInOutFromTop:
             slideInOut(state,
-                      delay: delay,
-                      duration: animationDuration,
-                      yPosition: finalY,
-                      alpha: finalAlpha)
-        case .slideAndFadeInOut:
+                       startingPoint: .top,
+                       delay: delay,
+                       duration: animationDuration,
+                       yPosition: finalY,
+                       alpha: finalAlpha)
+        case .slideAndFadeInOutFromTop:
             slideAndFadeInOut(state,
-                      delay: delay,
-                      duration: animationDuration,
-                      yPosition: finalY,
-                      alpha: finalAlpha)
+                       startingPoint: .top,
+                       delay: delay,
+                       duration: animationDuration,
+                       yPosition: finalY,
+                       alpha: finalAlpha)
+        case .slideInOutFromBottom:
+            slideInOut(state,
+                       startingPoint: .bottom,
+                       delay: delay,
+                       duration: animationDuration,
+                       yPosition: finalY,
+                       alpha: finalAlpha)
+        case .slideAndFadeInOutFromBottom:
+            slideAndFadeInOut(state,
+                       startingPoint: .bottom,
+                       delay: delay,
+                       duration: animationDuration,
+                       yPosition: finalY,
+                       alpha: finalAlpha)
         }
     }
     
     private func fadeInOut(_ state: State, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
-
         UIView.animate(withDuration: duration,
                        delay: delay,
                        animations: {
@@ -151,33 +195,42 @@ class ReachabilityViewController: UIViewController {
                                 height: self.configuration.options[.height] as! CGFloat)
             self.window.layoutIfNeeded()
         }
-        
-        
     }
     
-    private func slideInOut(_ state: State, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
+    private func slideInOut(_ state: State, startingPoint: StartingPoint, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
+        let height = self.configuration.options[.height] as! CGFloat
         view.alpha = 1
-        
+        var internalY = yPosition
+        if startingPoint == .bottom && state == .hide {
+            internalY = UIScreen.main.bounds.height + height
+        }
+
         UIView.animate(withDuration: duration,
                        delay: delay,
                        animations:
             {
                 self.view.frame = CGRect(x: 0,
-                                         y: yPosition,
+                                         y: internalY,
                                          width: self.window.frame.width,
-                                         height: self.configuration.options[.height] as! CGFloat)
+                                         height: height)
                 self.window.layoutIfNeeded()
         })
     }
     
-    private func slideAndFadeInOut(_ state: State, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
+    private func slideAndFadeInOut(_ state: State, startingPoint: StartingPoint, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
+        let height = self.configuration.options[.height] as! CGFloat
+        var internalY = yPosition
+        if startingPoint == .bottom && state == .hide {
+            internalY = UIScreen.main.bounds.height + height
+        }
+        
         UIView.animate(withDuration: duration,
                        delay: delay,
                        animations:
             {
                 self.view.alpha = state == .hide ? 0 : 1
                 self.view.frame = CGRect(x: 0,
-                                         y: yPosition,
+                                         y: internalY,
                                          width: self.window.frame.width,
                                          height: self.configuration.options[.height] as! CGFloat)
                 self.window.layoutIfNeeded()

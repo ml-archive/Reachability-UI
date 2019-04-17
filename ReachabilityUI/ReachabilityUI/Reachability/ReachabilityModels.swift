@@ -34,7 +34,9 @@ public struct ReachabilityConfiguration {
                                                               .height : CGFloat(30),
                                                               .font : UIFont.systemFont(ofSize: 12),
                                                               .textAlignment: NSTextAlignment.center,
-                                                              .animation : Animation.fadeInOut]
+                                                              .animation : Animation.fadeInOut,
+                                                              .appearance : Appearance.top,
+                                                              .appearanceAdjustment : CGFloat(0)]
     
     public init(title: String, noConnectionTitle: String, options: [ReachabilityConfiguration.Key : Any]?) {
         self.title = title
@@ -99,6 +101,20 @@ public struct ReachabilityConfiguration {
                 finalOptionsDict[.animation] = defaultOptionsDict[.animation]
             }
             
+            //appearance
+            if let appearance = options[.appearance] as? Appearance {
+                finalOptionsDict[.appearance] = appearance
+            } else {
+                finalOptionsDict[.appearance] = defaultOptionsDict[.appearance]
+            }
+            
+            //appearanceAdjustment
+            if let appearanceAdjustment = options[.appearanceAdjustment] as? CGFloat {
+                finalOptionsDict[.appearanceAdjustment] = appearanceAdjustment
+            } else {
+                finalOptionsDict[.appearanceAdjustment] = defaultOptionsDict[.appearanceAdjustment]
+            }
+            
         } else {
             finalOptionsDict = defaultOptionsDict
         }
@@ -118,15 +134,27 @@ extension ReachabilityConfiguration {
         case font //Has to be of type UIFont
         case textAlignment //Has to be of type NSTextAlignment
         case animation //Has to be of type ReachabilityConfiguration.Animation
+        case appearance //Has to be of type ReachabilityConfiguration.Appearance
+        case appearanceAdjustment //Has to be of type CGFloat
     }
     
     public enum Animation {
         /// the banner will appear/dissapear from the screen by changing the view's alpha value
         case fadeInOut
-        /// the banner will appear/dissapear from the screen by moving it's frame on and off the view
-        case slideInOut
-        /// the banner will appear/dissapear from the screen by moving it's frame on and off the view while simulatiously changing it's alpha values
-        case slideAndFadeInOut
+        /// the banner will appear/dissapear from the screen by moving it's frame on and off the view from the top
+        case slideInOutFromTop
+        /// the banner will appear/dissapear from the screen by moving it's frame on and off the view from the top, while simulatiously changing it's alpha values
+        case slideAndFadeInOutFromTop
+        /// the banner will appear/dissapear from the screen by moving it's frame on and off the view from the bottom
+        case slideInOutFromBottom
+        /// the banner will appear/dissapear from the screen by moving it's frame on and off the view from the bottom, while simulatiously changing it's alpha values
+        case slideAndFadeInOutFromBottom
+    }
+    
+    public enum Appearance {
+        case top
+        case center
+        case bottom
     }
     
 }
