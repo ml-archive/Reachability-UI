@@ -52,18 +52,9 @@ To be able to get the Reachability banner on top of your views, in your `AppDele
 ```swift
 private func addReachability() {
     // create a ReachabilityConfiguration instance  
-    let configuration = ReachabilityConfiguration(
-        noConnectionTitle: "No Connection",
-        noConnectionTitleColor: .white,
-        noConnectionBackgroundColor: UIColor.red.withAlphaComponent(0.6),
-        title: "Connected",
-        titleColor: .white,
-        backgroundColor: UIColor.green.withAlphaComponent(0.6),
-        height: 30,
-        font: UIFont.systemFont(ofSize: 12),
-        textAlignment: .center,
-        animation: .fadeInOut)
-    )
+    let configuration = ReachabilityConfiguration(title: "Connected",
+                                                      noConnectionTitle: "No Connection",
+                                                      options: nil)
 
     // create the ReachabilityCoordinator and pass it along the previously
     // created ReachabilityConfiguration together with the ReachabilityListenerFactoryProtocol
@@ -90,6 +81,31 @@ func subscribe() {
 }
 
 ```
+
+#### Change configurations if needed
+```swift
+
+ let configuration = ReachabilityConfiguration(title: "Connected",
+                                               noConnectionTitle: "No Connection",
+                                               options: [.appearance : ReachabilityConfiguration.Appearance.bottom,
+                                                         .appearanceAdjustment : CGFloat(-100),
+                                                         .animation : ReachabilityConfiguration.Animation.slideAndFadeInOutFromBottom])
+
+```
+
+The following options can be set:
+* titleColor //Has to be of type UIColor
+* noConnectionTitleColor //Has to be of type UIColor
+* noConnectionBackgroundColor //Has to be of type UIColor
+* backgroundColor //Has to be of type UIColor
+* height //Has to be of type CGFloat
+* font //Has to be of type UIFont
+* textAlignment //Has to be of type NSTextAlignment
+* animation //Has to be of type ReachabilityConfiguration.Animation
+* appearance //Has to be of type ReachabilityConfiguration.Appearance
+* appearanceAdjustment //Has to be of type CGFloat
+
+If options are set to `nil`, default options will be used. Any options set, will override the default state.
 
 ## 👥 Credits
 Made with ❤️ at [Nodes](http://nodesagency.com).
