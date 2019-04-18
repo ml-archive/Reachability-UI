@@ -85,7 +85,8 @@ func subscribe() {
 
 ```
 
-#### Change configurations if needed
+#### Change Configurations
+You can change the various options in the `ReachabilityConfiguration` to tailor the component to your needs.
 ```swift
 
  let configuration = ReachabilityConfiguration(title: "Connected",
