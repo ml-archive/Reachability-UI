@@ -3,10 +3,12 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nodes-ios/Reachability-UI/blob/master/LICENSE)
 ### Intro
 
-Demo Project + Framework showcasing the integration of the ReachabilityUI framework in a Nodes like VIPER architecture.
+ReachabilityUI is a framework meant to help informing the user when an app loses connection  to the internet.
 
-ReachabilityUI is a framework that is meant to help displaying the Network connection banner when the user loses connection to the internet in an app.
-With ReachabilityUI you can even register a `ReachabilityListener` instance that will allow you to get notified about the connection drop. This can be used to adjust your application's UI so that the content won't overlap the banner, or for any other action you might need to take when the connectivy drops.
+With ReachabilityUI you can even register a `ReachabilityListener` instance that will allow you to get notified about the connection drop. This can be used to adjust your application's UI so that the content won't overlap the banner, or for any other action you might need to take when the connectivity drops.
+
+Please refer to the demo project for a showcase on how to integrate the ReachabilityUI framework in a Nodes like VIPER architecture.
+
 
 ## 📝 Requirements
 
@@ -15,14 +17,14 @@ With ReachabilityUI you can even register a `ReachabilityListener` instance that
 
 ## 📦 Installation
 
-### Carthage 
+### Carthage
 ~~~bash
 github "nodes-ios/Reachability-UI"
 ~~~
 
 ## 💻 Usage
 
-#### Initialise the ReachabilityUI dependencies
+#### Initialize the ReachabilityUI Dependencies
 
 Conform to `HasReachabilityListenerRepository` and create a `ReachabilityUIManager` instance:
 
@@ -45,16 +47,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: HasReachabilityListenerRepository {}
 ```
 
-#### Initialise the ReachabilityUI banner 
+#### Initialize the ReachabilityUI Banner
 
-To be able to get the Reachability banner on top of your views, in your `AppDelegate.swift` you will need to add the following code snippet: 
+To enable the Reachability banner in your views, add the following code snippet to your `AppDelegate.swift`:
 
 ```swift
 private func addReachability() {
     // create a ReachabilityConfiguration instance  
     let configuration = ReachabilityConfiguration(title: "Connected",
-                                                      noConnectionTitle: "No Connection",
-                                                      options: nil)
+                                                  noConnectionTitle: "No Connection",
+                                                  options: nil)
 
     // create the ReachabilityCoordinator and pass it along the previously
     // created ReachabilityConfiguration together with the ReachabilityListenerFactoryProtocol
@@ -68,7 +70,8 @@ private func addReachability() {
 }
 ```
 
-#### Subscribe to ReachabilityUI callback in order to get notified about the connectivity change and adjust your layout. 
+#### Listen for Reachability Changes
+To get notified about connectivity changes you must create a `listener` and start listening in order to get notified about the connectivity changes.
 
 ```swift
 private var listener: ReachabilityListenerProtocol!
@@ -93,17 +96,17 @@ func subscribe() {
 
 ```
 
-The following options can be set:
-* titleColor //Has to be of type UIColor
-* noConnectionTitleColor //Has to be of type UIColor
-* noConnectionBackgroundColor //Has to be of type UIColor
-* backgroundColor //Has to be of type UIColor
-* height //Has to be of type CGFloat
-* font //Has to be of type UIFont
-* textAlignment //Has to be of type NSTextAlignment
-* animation //Has to be of type ReachabilityConfiguration.Animation
-* appearance //Has to be of type ReachabilityConfiguration.Appearance
-* appearanceAdjustment //Has to be of type CGFloat
+The following keys can be used in the `options` dictionary:
+* `.titleColor` (must be a `UIColor`)
+* `.noConnectionTitleColor` (must be a `UIColor`)
+* `.noConnectionBackgroundColor` (must be a `UIColor`)
+* `.backgroundColor` (must be a `UIColor`)
+* `.height` (must be a `CGFloat`)
+* `.font` (must be a `UIFont`)
+* `.textAlignment` (must be a `NSTextAlignment`)
+* `.animation` (must be a `ReachabilityConfiguration.Animation`)
+* `.appearance` (must be a `ReachabilityConfiguration.Appearance`)
+* `.appearanceAdjustment` (must be a `CGFloat`)
 
 If options are set to `nil`, default options will be used. Any options set, will override the default state.
 
