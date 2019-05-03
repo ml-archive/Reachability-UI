@@ -56,10 +56,6 @@ class TabBarCoordinator: Coordinator {
         let configuration = ReachabilityConfiguration(title: "Connected",
                                                       noConnectionTitle: "No Connection",
                                                       options: nil)
-<<<<<<< HEAD:ReachabilityUIDemo/ReachabilityUIDemo/Scenes/TabBar/TabBarCoordinator.swift
-        
-=======
->>>>>>> makes ReachabilityUIDemo a part of the main project:ReachabilityUI/ReachabilityUIDemo/Scenes/TabBar/TabBarCoordinator.swift
         let coordinator = ReachabilityCoordinator(window: window,
                                                   reachabilityListenerFactory: dependencies.reachabilityListenerFactory,
                                                   configuration: configuration)
