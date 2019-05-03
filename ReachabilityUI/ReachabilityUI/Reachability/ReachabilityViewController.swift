@@ -72,7 +72,8 @@ class ReachabilityViewController: UIViewController {
     public func addToContainer() {
         guard window != nil else { return }
         DispatchQueue.main.async {
-            if let height = self.configuration.options[.height] as? CGFloat,
+            if
+                let height = self.configuration.options[.height] as? CGFloat,
                 let animationType = self.configuration.options[.animation] as? ReachabilityConfiguration.Animation
             {
                 var yStartPosition:CGFloat = 0

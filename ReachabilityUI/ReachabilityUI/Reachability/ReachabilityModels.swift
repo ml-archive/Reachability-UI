@@ -44,8 +44,7 @@ public struct ReachabilityConfiguration {
         
         var finalOptionsDict = defaultOptionsDict
         
-        if let options = options {
-            
+        if let options = options {            
             //titleColor
             if let titleColor = options[.titleColor] as? UIColor {
                 finalOptionsDict[.titleColor] = titleColor
