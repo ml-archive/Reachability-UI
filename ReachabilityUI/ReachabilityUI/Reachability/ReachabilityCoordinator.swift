@@ -27,7 +27,11 @@ public class ReachabilityCoordinator {
     ///    - dependencies
     ///    - height of the UIViewController. Default value is 30
     ///
-    public init(window: UIWindow, reachabilityListenerFactory: ReachabilityListenerFactoryProtocol, hasNavigationBar: Bool = true, configuration: ReachabilityConfiguration) {
+    public init(window: UIWindow,
+                reachabilityListenerFactory: ReachabilityListenerFactoryProtocol,
+                hasNavigationBar: Bool = true,
+                configuration: ReachabilityConfiguration) {
+        
         self.window = window
         self.hasNavigationBar = hasNavigationBar
         self.reachabilityListenerFactory = reachabilityListenerFactory

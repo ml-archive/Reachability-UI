@@ -56,7 +56,6 @@ class TabBarCoordinator: Coordinator {
         let configuration = ReachabilityConfiguration(title: "Connected",
                                                       noConnectionTitle: "No Connection",
                                                       options: nil)
-        
         let coordinator = ReachabilityCoordinator(window: window,
                                                   reachabilityListenerFactory: dependencies.reachabilityListenerFactory,
                                                   configuration: configuration)
