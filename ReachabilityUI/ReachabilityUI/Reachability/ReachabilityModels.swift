@@ -13,13 +13,18 @@ enum Reachability {
     struct ReachabilityListener {}
 }
 
+public enum ReachabilityNotificationType {
+    case connectionChange(_ isConnected: Bool)
+    case connectionTypeChange(_ isCellular: Bool)
+}
+
 extension Reachability.ReachabilityListener {
     struct Request {}
     struct Response {
-        let isConnected: Bool
+        let notification: ReachabilityNotificationType
     }
     struct Display {
-        let isConnected: Bool
+        let notification: ReachabilityNotificationType
     }
 }
 

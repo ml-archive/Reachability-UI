@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReachabilityUI
 
 enum UniversalGreeting {
     struct ReachabilityListener {}
@@ -15,9 +16,9 @@ enum UniversalGreeting {
 extension UniversalGreeting.ReachabilityListener {
     struct Request {}
     struct Response {
-        let isConnected: Bool
+        let reachabilityNotification: ReachabilityNotificationType
     }
     struct Display {
-        let isConnected: Bool
+        let reachabilityNotification: ReachabilityNotificationType
     }
 }

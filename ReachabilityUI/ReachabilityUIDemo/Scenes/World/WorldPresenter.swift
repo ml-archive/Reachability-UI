@@ -34,6 +34,6 @@ extension WorldPresenter: WorldPresenterInput {
 // INTERACTOR -> PRESENTER (indirect)
 extension WorldPresenter: WorldInteractorOutput {
     func present(_ response: World.ReachabilityListener.Response) {
-        output?.display(World.ReachabilityListener.Display(isConnected: response.isConnected))
+        output?.display(World.ReachabilityListener.Display(reachabilityNotification: response.reachabilityNotification))
     }
 }

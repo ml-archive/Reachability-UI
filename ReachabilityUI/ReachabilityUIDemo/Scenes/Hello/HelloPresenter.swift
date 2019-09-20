@@ -52,6 +52,6 @@ extension HelloPresenter: HelloPresenterInput {
 // INTERACTOR -> PRESENTER (indirect)
 extension HelloPresenter: HelloInteractorOutput {
     func present(_ response: Hello.ReachabilityListener.Response) {
-        output?.display(Hello.ReachabilityListener.Display(isConnected: response.isConnected))
+        output?.display(Hello.ReachabilityListener.Display(reachabilityNotification: response.reachabilityNotification))
     }
 }

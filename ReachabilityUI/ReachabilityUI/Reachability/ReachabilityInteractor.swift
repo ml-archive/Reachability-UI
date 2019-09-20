@@ -31,8 +31,8 @@ extension ReachabilityInteractor: ReachabilityInteractorInput {
     func perform(_ request:  Reachability.ReachabilityListener.Request) {
         let listener = reachabilityListenerFactory.makeListener()
         self.listener = listener
-        listener.listen { [weak self] isConnected in
-            self?.output?.present(Reachability.ReachabilityListener.Response(isConnected: isConnected))
+        listener.listen { [weak self] notification in
+            self?.output?.present(Reachability.ReachabilityListener.Response(notification: notification))
         }
     }
     
