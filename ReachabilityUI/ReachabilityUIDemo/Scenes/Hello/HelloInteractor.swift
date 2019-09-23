@@ -32,8 +32,8 @@ extension HelloInteractor: HelloInteractorInput {
     func perform(_ request: Hello.ReachabilityListener.Request) {
         let listener = reachabilityListenerFactory.makeListener()
         self.listener = listener
-        listener.listen { [weak self] (isConnected) in
-            self?.output?.present(Hello.ReachabilityListener.Response(isConnected: isConnected))
+        listener.listen { [weak self] (notification) in
+            self?.output?.present(Hello.ReachabilityListener.Response(reachabilityNotification: notification))
         }
     }
     

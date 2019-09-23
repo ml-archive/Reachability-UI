@@ -35,6 +35,6 @@ extension ReachabilityPresenter: ReachabilityPresenterInput {
 // INTERACTOR -> PRESENTER (indirect)
 extension ReachabilityPresenter: ReachabilityInteractorOutput {
     func present(_ response: Reachability.ReachabilityListener.Response) {
-        output?.display(Reachability.ReachabilityListener.Display(isConnected: response.isConnected))
+        output?.display(Reachability.ReachabilityListener.Display(notification: response.notification))
     }
 }

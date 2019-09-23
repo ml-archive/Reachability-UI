@@ -46,9 +46,14 @@ class WorldViewController: UIViewController {
 // PRESENTER -> VIEW
 extension WorldViewController: WorldPresenterOutput {
     func display(_ displayModel: World.ReachabilityListener.Display) {
-        containerViewTop.constant = displayModel.isConnected ? 0 : Sizes.Height.reachabilityView
-        UIView.animate(withDuration: 0.2) {
-            self.view.layoutIfNeeded()
+        switch displayModel.reachabilityNotification {
+        case .connectionChange(let isConnected):
+            containerViewTop.constant = isConnected ? 0 : Sizes.Height.reachabilityView
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+            }
+        case .connectionTypeChange(_):
+            break
         }
     }
 }

@@ -30,8 +30,8 @@ extension WorldInteractor: WorldInteractorInput {
     func perform(_ request: World.ReachabilityListener.Request) {
         let listener = reachabilityListenerFactory.makeListener()
         self.listener = listener
-        listener.listen { [weak self] (isConnected) in
-            self?.output?.present(World.ReachabilityListener.Response(isConnected: isConnected))
+        listener.listen { [weak self] (notification) in
+            self?.output?.present(World.ReachabilityListener.Response(reachabilityNotification: notification))
         }
     }
 }

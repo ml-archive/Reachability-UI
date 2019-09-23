@@ -32,19 +32,37 @@ final class ReachabilityManager: ReachabilityRepository {
         }
     }
     
+    private var isCellular = false {
+        didSet {
+            guard reachabilityDelegate != nil else { return }
+            if isConnected {
+                reachabilityDelegate?.networkTypeChanged(isCellular)
+            }
+        }
+    }
+    
     // MARK: - Reachability releated
     
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com")
     // Queue where the `SCNetworkReachability` callbacks run
+    
     private let queue = DispatchQueue.global(qos: .background)
+    
     // We use it to keep a backup of the last flags read.
     private var currentReachabilityFlags: SCNetworkReachabilityFlags? {
         didSet {
             if let currentReachabilityFlags = currentReachabilityFlags {
-                isConnected = currentReachabilityFlags.contains(.reachable)
+                if currentReachabilityFlags.contains(.reachable) != isConnected {
+                    isConnected = currentReachabilityFlags.contains(.reachable)
+                }
+                
+                if isConnected {
+                    isCellular = currentReachabilityFlags.contains(.isWWAN)
+                }
             }
         }
     }
+    
     // Flag used to avoid starting listening if we are already listening
     private var isListening = false
     
@@ -70,10 +88,13 @@ final class ReachabilityManager: ReachabilityRepository {
     private func start() {
         // Checks if we are already listening
         guard !isListening else { return }
+        
         // Optional binding since `SCNetworkReachabilityCreateWithName` returns an optional object
         guard let reachability = reachability else { return }
+        
         // Creates a context
         var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
+        
         // Sets `self` as listener object
         context.info = UnsafeMutableRawPointer(Unmanaged<ReachabilityManager>.passUnretained(self).toOpaque())
         let callbackClosure: SCNetworkReachabilityCallBack? = {
@@ -85,14 +106,17 @@ final class ReachabilityManager: ReachabilityRepository {
                 handler.checkReachability(flags: flags)
             }
         }
+        
         // Registers the callback. `callbackClosure` is the closure where we manage the callback implementation
         if !SCNetworkReachabilitySetCallback(reachability, callbackClosure, &context) {
             // Not able to set the callback
         }
+        
         // Sets the dispatch queue which is `DispatchQueue.main` for this example. It can be also a background queue
         if !SCNetworkReachabilitySetDispatchQueue(reachability, queue) {
             // Not able to set the queue
         }
+        
         // Runs the first time to set the current flags
         queue.async {
             // Resets the flags stored, in this way `checkReachability` will set the new ones

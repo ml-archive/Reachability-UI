@@ -10,9 +10,31 @@ import UIKit
 
 class ReachabilityViewController: UIViewController {
     
-    private enum State: Int {
-        case show
-        case hide
+    private enum State {
+        case show(_ type: ReachabilityNotificationType)
+        case hide(_ type: ReachabilityNotificationType)
+        
+        var isHiding: Bool {
+            switch self {
+            case .show:
+                return false
+            default:
+                return true
+            }
+        }
+        
+        // Remove this later, if we want network change to display a visual notification
+        var shouldAnimate: Bool {
+            switch self {
+            case .show(let notification), .hide(let notification):
+                switch notification {
+                case .connectionChange:
+                    return true
+                case .connectionTypeChange:
+                    return false
+                }
+            }
+        }
     }
     
     private enum StartingPoint {
@@ -26,11 +48,13 @@ class ReachabilityViewController: UIViewController {
     
     private var state: State! {
         didSet {
-            adjustLabelBasedOnConfiguration(state)
-            DispatchQueue.main.async {
-                if let animation = self.configuration.options[.animation] as? ReachabilityConfiguration.Animation {
-                    self.prepareForAnimatingPositionChange(self.state, animation: animation)
-                    self.window.bringSubviewToFront(self.view)
+            if state.shouldAnimate {
+                adjustLabelBasedOnConfiguration(state)
+                DispatchQueue.main.async {
+                    if let animation = self.configuration.options[.animation] as? ReachabilityConfiguration.Animation {
+                        self.prepareForAnimatingPositionChange(self.state, animation: animation)
+                        self.window.bringSubviewToFront(self.view)
+                    }
                 }
             }
         }
@@ -45,7 +69,13 @@ class ReachabilityViewController: UIViewController {
     private var configuration: ReachabilityConfiguration!
     private var isConnected: Bool = true {
         didSet {
-            state = isConnected ? .hide : .show
+            state = isConnected ? .hide(.connectionChange(isConnected)) : .show(.connectionChange(isConnected))
+        }
+    }
+    
+    private var isCellular: Bool = true {
+        didSet {
+            state = isCellular ? .hide(.connectionTypeChange(isCellular)) : .show(.connectionTypeChange(isCellular))
         }
     }
     
@@ -110,14 +140,28 @@ class ReachabilityViewController: UIViewController {
         }
         
         switch state {
-        case .show:
-            titleLabel.text = configuration.noConnectionTitle
-            titleLabel.textColor = configuration.options[.noConnectionTitleColor] as? UIColor
-            view.backgroundColor = configuration.options[.noConnectionBackgroundColor] as? UIColor
-        case .hide:
-            titleLabel.text = configuration.title
-            titleLabel.textColor = configuration.options[.titleColor] as? UIColor
-            view.backgroundColor = configuration.options[.backgroundColor] as? UIColor
+        case .show(let notificationType):
+            switch notificationType {
+            case .connectionChange:
+                titleLabel.text = configuration.noConnectionTitle
+                titleLabel.textColor = configuration.options[.noConnectionTitleColor] as? UIColor
+                view.backgroundColor = configuration.options[.noConnectionBackgroundColor] as? UIColor
+            case .connectionTypeChange:
+                // Add visual notification here if needed
+                break
+            }
+            
+        case .hide(let notificationType):
+            switch notificationType {
+            case .connectionChange:
+                titleLabel.text = configuration.title
+                titleLabel.textColor = configuration.options[.titleColor] as? UIColor
+                view.backgroundColor = configuration.options[.backgroundColor] as? UIColor
+            case .connectionTypeChange:
+                // Add visual notification here if needed
+                break
+            }
+            
         }
     }
     
@@ -127,7 +171,8 @@ class ReachabilityViewController: UIViewController {
             let appearanceAdjustment = self.configuration.options[.appearanceAdjustment] as? CGFloat
         {
             // change current alpha state
-            view.alpha = state == .hide ? 1 : 0
+            
+            view.alpha = state.isHiding ? 1 : 0
             
             // figure out View poistion
             let statusBarHeight = UIApplication.shared.statusBarFrame.height
@@ -137,20 +182,20 @@ class ReachabilityViewController: UIViewController {
             
             switch appearance {
             case .top:
-                finalY = state == .hide ? -height : statusBarHeight + navigationBarHeight + appearanceAdjustment
+                finalY = state.isHiding ? -height : statusBarHeight + navigationBarHeight + appearanceAdjustment
             case .center:
-                finalY = state == .hide ? -height : screenBounds.midY + appearanceAdjustment
+                finalY = state.isHiding ? -height : screenBounds.midY + appearanceAdjustment
             case .bottom:
-                finalY = state == .hide ? -height : screenBounds.height - height + appearanceAdjustment
+                finalY = state.isHiding ? -height : screenBounds.height - height + appearanceAdjustment
             }
             
             //figure out view alpha
-            let finalAlpha = state == .hide && (animation == .fadeInOut || animation == .slideAndFadeInOutFromTop || animation == .slideAndFadeInOutFromBottom) ? 0 : 1
+            let finalAlpha = state.isHiding && (animation == .fadeInOut || animation == .slideAndFadeInOutFromTop || animation == .slideAndFadeInOutFromBottom) ? 0 : 1
             
             // set animation durations
             let animated = view.frame.height == height
             let animationDuration = animated ? 0.3 : 0.0
-            let delay = state == .hide ? 0.75 : 0.0
+            let delay = state.isHiding ? 0.75 : 0.0
             
             run(animation, with: delay, for: animationDuration, to: finalY, to: finalAlpha)
         }
@@ -199,7 +244,7 @@ class ReachabilityViewController: UIViewController {
         UIView.animate(withDuration: duration,
                        delay: delay,
                        animations: {
-                        self.view.alpha = state == .hide ? 0 : 1
+                        self.view.alpha = state.isHiding ? 0 : 1
                         self.window.layoutIfNeeded()
         }) { (_) in
             if let height = self.configuration.options[.height] as? CGFloat {
@@ -216,7 +261,7 @@ class ReachabilityViewController: UIViewController {
         if let height = self.configuration.options[.height] as? CGFloat {
             view.alpha = 1
             var internalY = yPosition
-            if startingPoint == .bottom && state == .hide {
+            if startingPoint == .bottom && state.isHiding {
                 internalY = UIScreen.main.bounds.height + height
             }
             
@@ -236,7 +281,7 @@ class ReachabilityViewController: UIViewController {
     private func slideAndFadeInOut(_ state: State, startingPoint: StartingPoint, delay: TimeInterval, duration: TimeInterval, yPosition: CGFloat, alpha: Int) {
         if let height = self.configuration.options[.height] as? CGFloat {
             var internalY = yPosition
-            if startingPoint == .bottom && state == .hide {
+            if startingPoint == .bottom && state.isHiding {
                 internalY = UIScreen.main.bounds.height + height
             }
             
@@ -244,7 +289,7 @@ class ReachabilityViewController: UIViewController {
                            delay: delay,
                            animations:
                 {
-                    self.view.alpha = state == .hide ? 0 : 1
+                    self.view.alpha = state.isHiding ? 0 : 1
                     self.view.frame = CGRect(x: 0,
                                              y: internalY,
                                              width: self.window.frame.width,
@@ -261,6 +306,12 @@ class ReachabilityViewController: UIViewController {
 // PRESENTER -> VIEW
 extension ReachabilityViewController: ReachabilityPresenterOutput {
     func display(_ displayModel: Reachability.ReachabilityListener.Display) {
-        self.isConnected = displayModel.isConnected
+        switch displayModel.notification {
+        case .connectionChange(let isConnected):
+            self.isConnected = isConnected
+        case .connectionTypeChange(let isCellular):
+            self.isCellular = isCellular
+        }
+        
     }
 }
