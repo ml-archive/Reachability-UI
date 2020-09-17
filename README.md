@@ -22,6 +22,11 @@ Please refer to the demo project for a showcase on how to integrate the Reachabi
 github "nodes-ios/Reachability-UI"
 ~~~
 
+### Cocoapods
+~~~bash
+pod "Reachability-UI"
+~~~
+
 ## 💻 Usage
 
 #### Initialize the ReachabilityUI Dependencies
