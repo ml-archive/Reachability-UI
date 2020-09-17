@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "ReachabilityUI"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
 
   spec.summary      = "ReachabilityUI is a framework meant to help informing the user when an app loses connection to the internet."
   spec.description = "ReachabilityUI is a framework meant to help informing the user when an app loses connection to the internet. With ReachabilityUI you can even register a ReachabilityListener instance that will allow you to get notified about the connection drop. This can be used to adjust your application's UI so that the content won't overlap the banner, or for any other action you might need to take when the connectivity drops."
