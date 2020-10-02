@@ -24,7 +24,7 @@ github "nodes-ios/Reachability-UI"
 
 ### Cocoapods
 ~~~bash
-pod "Reachability-UI"
+pod "ReachabilityUI"
 ~~~
 
 ## 💻 Usage
