@@ -32,8 +32,8 @@ extension UniversalGreetingInteractor: UniversalGreetingInteractorInput {
     func perform(_ request: UniversalGreeting.ReachabilityListener.Request) {
         let listener = reachabilityListenerFactory.makeListener()
         self.listener = listener
-        listener.listen { [weak self] (isConnected) in
-            self?.output?.present(UniversalGreeting.ReachabilityListener.Response(isConnected: isConnected))
+        listener.listen { [weak self] (notification) in
+            self?.output?.present(UniversalGreeting.ReachabilityListener.Response(reachabilityNotification: notification))
         }
     }
 }

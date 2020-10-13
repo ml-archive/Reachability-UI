@@ -38,6 +38,6 @@ extension UniversalGreetingPresenter: UniversalGreetingPresenterInput {
 // INTERACTOR -> PRESENTER (indirect)
 extension UniversalGreetingPresenter: UniversalGreetingInteractorOutput {
     func present(_ response: UniversalGreeting.ReachabilityListener.Response) {
-        output?.display(UniversalGreeting.ReachabilityListener.Display(isConnected: response.isConnected))
+        output?.display(UniversalGreeting.ReachabilityListener.Display(reachabilityNotification: response.reachabilityNotification))
     }
 }

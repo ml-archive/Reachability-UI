@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias Listener = (_ isConnected: Bool) -> Void
+public typealias Listener = (_ notification: ReachabilityNotificationType) -> Void
 
 // MARK: - Public protocols
 
@@ -25,6 +25,7 @@ protocol ReachabilityListenerRepository: class {
 
 protocol ReachabilityDelegate: class {
     func networkStatusChanged(_ isConnected: Bool)
+    func networkTypeChanged(_ isCellular: Bool)
 }
 
 public protocol HasReachabilityListenerRepository {
@@ -38,9 +39,15 @@ public final class ReachabilityUIManager: ReachabilityListenerRepository {
     private var listenerCount: Int = 0
     private var isConnected = false {
         didSet {
-            notify()
+            notify(.connectionChange(isConnected))
         }
     }
+    private var isCellular = false {
+        didSet {
+            notify(.connectionTypeChange(isCellular))
+        }
+    }
+    
     private var listeners: [Int: Listener] = [:]
     
     // MARK: - Init
@@ -54,16 +61,16 @@ public final class ReachabilityUIManager: ReachabilityListenerRepository {
     
     func addListener(_ listener: @escaping Listener, id: Int) {
         listeners[id] = listener
-        notify()
+        notify(.connectionChange(isConnected))
     }
     
     func removeListener(for id: Int) {
         listeners[id] = nil
     }
     
-    private func notify() {
+    private func notify(_ notification: ReachabilityNotificationType) {
         listeners.values.forEach { (listener) in
-            listener(isConnected)
+            listener(notification)
         }
     }
 }
@@ -83,5 +90,11 @@ extension ReachabilityUIManager: ReachabilityListenerFactoryProtocol {
 extension ReachabilityUIManager: ReachabilityDelegate {
     func networkStatusChanged(_ isConnected: Bool) {
         self.isConnected = isConnected
+    }
+    
+    func networkTypeChanged(_ isCellular: Bool) {
+        if isCellular != self.isCellular {
+            self.isCellular = isCellular
+        }
     }
 }

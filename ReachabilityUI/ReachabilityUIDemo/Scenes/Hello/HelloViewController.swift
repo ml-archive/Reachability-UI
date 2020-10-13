@@ -79,9 +79,15 @@ extension HelloViewController: UITableViewDelegate {
 // PRESENTER -> VIEW
 extension HelloViewController: HelloPresenterOutput {
     func display(_ displayModel: Hello.ReachabilityListener.Display) {
-        tableViewTop.constant = displayModel.isConnected ? 0 : Sizes.Height.reachabilityView
-        UIView.animate(withDuration: 0.2) {
-            self.view.layoutIfNeeded()
+        switch displayModel.reachabilityNotification {
+        case .connectionChange(let isConnected):
+            tableViewTop.constant = isConnected ? 0 : Sizes.Height.reachabilityView
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+            }
+        case .connectionTypeChange(let isCellular):
+            print("Is cellular? \(isCellular)")
         }
+        
     }
 }
